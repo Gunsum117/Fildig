@@ -1,8 +1,14 @@
-class ReviewsController < ApplicationController
+class FilmsController < ApplicationController
   def new
   end
 
   def create
+  end
+
+  def index
+  end
+
+  def show
   end
 
   def edit
@@ -13,5 +19,4 @@ class ReviewsController < ApplicationController
 
   def destroy
   end
-
 end

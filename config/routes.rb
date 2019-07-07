@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   	resources :users,       only:[:index, :show, :edit, :update, :destroy]
   	resources :films,		only:[:new, :create, :index, :show, :edit, :update, :destroy]
   	resources :tags,		only:[:create, :index, :show, :update]
-  	resources :reviews,		only:[:edit, :update]
+  	resources :reviews,		only:[:edit, :update, :destroy]
   end
 
 
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   resources :relationships,	only:[:create, :destroy]
   resources :films,			only:[:new, :create, :index, :show, :edit, :update, :destroy]
   resources :tags,			only:[:create, :index, :show, :update]
-  resources :reviews,		only:[:new, :create, :edit, :update]
+  resources :reviews,		only:[:new, :create, :edit, :update, :destroy]
   resources :good_reviews,	only:[:create, :destroy]
   resources :wishes,		only:[:create, :destroy]
   resources :dones,			only:[:create, :destroy]

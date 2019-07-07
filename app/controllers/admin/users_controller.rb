@@ -1,8 +1,8 @@
-class ReviewsController < ApplicationController
-  def new
+class UsersController < ApplicationController
+  def index
   end
 
-  def create
+  def show
   end
 
   def edit
@@ -13,5 +13,4 @@ class ReviewsController < ApplicationController
 
   def destroy
   end
-
 end
