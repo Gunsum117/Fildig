@@ -1,0 +1,2 @@
+module MybestsHelper
+end

@@ -1,0 +1,2 @@
+module GoodReviewsHelper
+end
