@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  image_id: MyText
+  based: MyString
+  release: 2019-07-07 10:01:22
+  time: 1
+  language: MyString
+
+two:
+  title: MyString
+  image_id: MyText
+  based: MyString
+  release: 2019-07-07 10:01:22
+  time: 1
+  language: MyString

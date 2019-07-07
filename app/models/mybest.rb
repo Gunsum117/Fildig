@@ -1,0 +1,2 @@
+class Mybest < ApplicationRecord
+end

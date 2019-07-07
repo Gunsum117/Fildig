@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  film_id: MyString
+  tag_id: MyString
+  role: MyString
+
+two:
+  film_id: MyString
+  tag_id: MyString
+  role: MyString
