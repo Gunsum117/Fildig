@@ -1,42 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html  lang="ja">
   <head>
     <title>Fildig</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top">
+    <nav class="navbar navbar-expand navbar-dark bg-dark" >
       <div class="container">
-        <nav>
+        <ul class="navbar-nav ml-auto">
+
           <% if admin_signed_in? %>
             <li class="nav-item">
-                <%= link_to "LOG OUT", destroy_admin_session_path, method: :delete %>
+              <%= link_to "LOG OUT", destroy_admin_session_path, method: :delete, class: "nav-link" %>
             </li>
 
           <% elsif user_signed_in? %>
             <li class="nav-item">
-                <%= link_to "LOG OUT", destroy_user_session_path, method: :delete %>
+              <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
 
           <% else %>
             <li class="nav-item">
-                <%= link_to "LOG IN", new_user_session_path, :class =>"fas fa-sign-in-alt" %>
+              <%= link_to "LOG IN", new_user_session_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-                <%= link_to "SIGN UP", new_user_registration_path, :class =>"fas fa-user-plus" %>
+              <%= link_to "SIGN UP", new_user_registration_path, class: "nav-link" %>
             </li>
 
           <% end %>
 
-        </nav>
-      </div>
-    </header>
+        </ul>
+      </div><!-- container -->
+    </nav>
 
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   </body>
 </html>
