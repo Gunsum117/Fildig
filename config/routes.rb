@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root
+  root "films#index"
 
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
@@ -32,6 +32,5 @@ Rails.application.routes.draw do
   resources :dones,			only:[:create, :destroy]
   resources :mybests,		only:[:create, :destroy]
   resources :contacts,		only:[:new, :create, :destroy]
-
 
 end

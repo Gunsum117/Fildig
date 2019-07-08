@@ -10,6 +10,33 @@
   </head>
 
   <body>
+    <header class="navbar navbar-fixed-top">
+      <div class="container">
+        <nav>
+          <% if admin_signed_in? %>
+            <li class="nav-item">
+                <%= link_to "LOG OUT", destroy_admin_session_path, method: :delete %>
+            </li>
+
+          <% elsif user_signed_in? %>
+            <li class="nav-item">
+                <%= link_to "LOG OUT", destroy_user_session_path, method: :delete %>
+            </li>
+
+          <% else %>
+            <li class="nav-item">
+                <%= link_to "LOG IN", new_user_session_path, :class =>"fas fa-sign-in-alt" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "SIGN UP", new_user_registration_path, :class =>"fas fa-user-plus" %>
+            </li>
+
+          <% end %>
+
+        </nav>
+      </div>
+    </header>
+
     <%= yield %>
   </body>
 </html>
