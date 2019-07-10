@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  root "films#index"
-
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
@@ -41,4 +39,6 @@ Rails.application.routes.draw do
   resources :tags,			only:[:create, :index, :show, :update]
   resources :contacts,		only:[:new, :create, :destroy]
 
+
+  root "films#index"
 end

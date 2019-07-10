@@ -1,4 +1,4 @@
-class FilmsController < ApplicationController
+class Admin::FilmsController < ApplicationController
 
   before_action :authenticate_admin!, only: [:new, :create, :index, :show, :edit, :update, :destroy]
 
