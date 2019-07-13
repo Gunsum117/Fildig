@@ -66,3 +66,6 @@ gem 'devise'
 gem 'bootstrap', '~> 4.3.1'
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+
+gem 'acts-as-taggable-on', '~> 6.0'
