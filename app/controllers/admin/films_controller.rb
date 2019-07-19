@@ -33,12 +33,20 @@ class Admin::FilmsController < ApplicationController
        flash[:success] = '"' + @film.title + '"を編集しました'
        redirect_to admin_films_path
     else
-       flash[:warning] = "商品編集に失敗しました"
+       flash[:warning] = "編集に失敗しました"
        redirect_to admin_films_path
     end
   end
 
   def destroy
+    @film = Film.find(params[:id])
+    if @film.destroy
+       flash[:success] = '"' + @film.title + '"を削除しました'
+       redirect_to admin_films_path
+    else
+       flash[:warning] = "削除に失敗しました"
+       redirect_to admin_films_path
+    end
   end
 
   private

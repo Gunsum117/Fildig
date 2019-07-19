@@ -16357,3 +16357,538 @@ Processing by Admin::FilmsController#index as HTML
 Completed 200 OK in 1979ms (Views: 1885.8ms | ActiveRecord: 45.3ms)
 
 
+Started DELETE "/admin/films/1" for 10.0.2.2 at 2019-07-19 09:13:13 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by Admin::FilmsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ox3OZbLn2FfDexdT87OjhFJlDG5qiQGsMPpcEoilC6LbGJJsVtwv/D9u/mUWCmpX7sINagahPnN+dolzVmcLCw==", "id"=>"1"}
+  [1m[36mAdmin Load (1.0ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/films/destroy.html.erb within layouts/application
+  Rendered admin/films/destroy.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 13421ms (Views: 13308.3ms | ActiveRecord: 12.9ms)
+
+
+Started GET "/admin/films" for 10.0.2.2 at 2019-07-19 09:13:27 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::FilmsController#index as HTML
+  [1m[36mAdmin Load (1.9ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/films/index.html.erb within layouts/application
+  [1m[36mFilm Load (2.1ms)[0m  [1m[34mSELECT "films".* FROM "films"[0m
+  ↳ app/views/admin/films/index.html.erb:22
+  [1m[36mActsAsTaggableOn::Tagging Load (4.1ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 1], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  [1m[36mActsAsTaggableOn::Tag Load (4.9ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'performers' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 1], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  Rendered admin/films/_tag.html.erb (2.5ms)
+  [1m[36mActsAsTaggableOn::Tag Load (2.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'staffs' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 1], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:27
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (2.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'genres' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 1], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:28
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tagging Load (2.1ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 2], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  [1m[36mActsAsTaggableOn::Tag Load (2.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'performers' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 2], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (2.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'staffs' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 2], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:27
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (1.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'genres' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 2], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:28
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tagging Load (1.4ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 3], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  [1m[36mActsAsTaggableOn::Tag Load (1.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'performers' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 3], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (1.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'staffs' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 3], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:27
+  Rendered admin/films/_tag.html.erb (0.2ms)
+  [1m[36mActsAsTaggableOn::Tag Load (1.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'genres' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 3], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:28
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tagging Load (2.0ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 4], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  [1m[36mActsAsTaggableOn::Tag Load (1.9ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'performers' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 4], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (1.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'staffs' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 4], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:27
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (1.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'genres' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 4], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:28
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tagging Load (1.5ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 5], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  [1m[36mActsAsTaggableOn::Tag Load (5.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'performers' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 5], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (2.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'staffs' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 5], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:27
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (2.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'genres' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 5], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:28
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  Rendered admin/films/index.html.erb within layouts/application (1002.5ms)
+Completed 200 OK in 2860ms (Views: 2653.5ms | ActiveRecord: 87.2ms)
+
+
+Started GET "/admin/tagsinput.css" for 10.0.2.2 at 2019-07-19 09:13:30 +0000
+Started GET "/admin/tagsinput.js" for 10.0.2.2 at 2019-07-19 09:13:30 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/admin/tagsinput.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  
+ActionController::RoutingError (No route matches [GET] "/admin/tagsinput.css"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/admin/tagsinput.js" for 10.0.2.2 at 2019-07-19 09:13:30 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/admin/tagsinput.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/admin/films" for 10.0.2.2 at 2019-07-19 09:15:38 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by Admin::FilmsController#index as HTML
+  [1m[36mAdmin Load (4.5ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/films/index.html.erb within layouts/application
+  [1m[36mFilm Load (2.6ms)[0m  [1m[34mSELECT "films".* FROM "films"[0m
+  ↳ app/views/admin/films/index.html.erb:22
+  [1m[36mActsAsTaggableOn::Tagging Load (2.2ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 1], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  [1m[36mActsAsTaggableOn::Tag Load (1.9ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'performers' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 1], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  Rendered admin/films/_tag.html.erb (0.4ms)
+  [1m[36mActsAsTaggableOn::Tag Load (2.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'staffs' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 1], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:27
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (1.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'genres' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 1], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:28
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tagging Load (1.2ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 2], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  [1m[36mActsAsTaggableOn::Tag Load (1.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'performers' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 2], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (2.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'staffs' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 2], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:27
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (1.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'genres' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 2], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:28
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tagging Load (1.3ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 3], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  [1m[36mActsAsTaggableOn::Tag Load (6.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'performers' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 3], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (1.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'staffs' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 3], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:27
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (2.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'genres' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 3], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:28
+  Rendered admin/films/_tag.html.erb (0.2ms)
+  [1m[36mActsAsTaggableOn::Tagging Load (6.4ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 4], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  [1m[36mActsAsTaggableOn::Tag Load (2.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'performers' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 4], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (3.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'staffs' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 4], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:27
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (1.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'genres' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 4], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:28
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tagging Load (1.2ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 5], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  [1m[36mActsAsTaggableOn::Tag Load (1.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'performers' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 5], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (1.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'staffs' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 5], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:27
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (2.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'genres' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 5], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:28
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  Rendered admin/films/index.html.erb within layouts/application (3298.9ms)
+Completed 200 OK in 6707ms (Views: 6448.1ms | ActiveRecord: 90.6ms)
+
+
+Started GET "/admin/tagsinput.css" for 10.0.2.2 at 2019-07-19 09:15:45 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/tagsinput.js" for 10.0.2.2 at 2019-07-19 09:15:45 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/admin/tagsinput.css"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  
+ActionController::RoutingError (No route matches [GET] "/admin/tagsinput.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started DELETE "/admin/films/4" for 10.0.2.2 at 2019-07-19 09:15:50 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::FilmsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Yu8Ma5D5k7/S6stX3jT7pDFruM7kclAqUTUUuMREXOIa6lBidMJkFC7/ImE7jTJ3jcy5yohab/UfucHZGoZcSw==", "id"=>"4"}
+  [1m[36mAdmin Load (2.5ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mFilm Load (2.5ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/admin/films_controller.rb:42
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tagging Load (5.9ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 4], ["taggable_type", "Film"]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tagging Destroy (13.5ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = ?[0m  [["id", 21]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tag Update All (1.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) - 1 WHERE "tags"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tagging Destroy (0.4ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = ?[0m  [["id", 16]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) - 1 WHERE "tags"."id" = ?[0m  [["id", 9]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tagging Destroy (0.2ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = ?[0m  [["id", 17]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tag Update All (0.3ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) - 1 WHERE "tags"."id" = ?[0m  [["id", 10]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tagging Destroy (0.3ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = ?[0m  [["id", 18]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tag Update All (0.1ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) - 1 WHERE "tags"."id" = ?[0m  [["id", 11]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tagging Destroy (0.2ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = ?[0m  [["id", 20]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tag Update All (0.5ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) - 1 WHERE "tags"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tagging Destroy (0.2ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = ?[0m  [["id", 30]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tag Update All (0.3ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) - 1 WHERE "tags"."id" = ?[0m  [["id", 17]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tagging Load (0.3ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 4], ["taggable_type", "Film"], ["context", "interests"]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tagging Load (0.4ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 4], ["taggable_type", "Film"], ["context", "performers"]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tagging Load (0.1ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 4], ["taggable_type", "Film"], ["context", "staffs"]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tagging Load (0.1ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 4], ["taggable_type", "Film"], ["context", "genres"]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mActsAsTaggableOn::Tagging Load (0.1ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 4], ["taggable_type", "Film"], ["context", "tags"]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."film_id" = ?[0m  [["film_id", "4"]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mWish Load (6.6ms)[0m  [1m[34mSELECT "wishes".* FROM "wishes" WHERE "wishes"."film_id" = ?[0m  [["film_id", "4"]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mDone Load (0.6ms)[0m  [1m[34mSELECT "dones".* FROM "dones" WHERE "dones"."film_id" = ?[0m  [["film_id", "4"]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mMybest Load (0.5ms)[0m  [1m[34mSELECT "mybests".* FROM "mybests" WHERE "mybests"."film_id" = ?[0m  [["film_id", "4"]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[36mFilm Destroy (1.0ms)[0m  [1m[31mDELETE FROM "films" WHERE "films"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/admin/films_controller.rb:43
+  [1m[35m (13.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/admin/films_controller.rb:43
+Redirected to http://localhost:3000/admin/films
+Completed 302 Found in 323ms (ActiveRecord: 54.1ms)
+
+
+Started GET "/admin/films" for 10.0.2.2 at 2019-07-19 09:15:50 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::FilmsController#index as HTML
+  [1m[36mAdmin Load (2.7ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = ? ORDER BY "admins"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/films/index.html.erb within layouts/application
+  [1m[36mFilm Load (2.2ms)[0m  [1m[34mSELECT "films".* FROM "films"[0m
+  ↳ app/views/admin/films/index.html.erb:22
+  [1m[36mActsAsTaggableOn::Tagging Load (1.9ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 1], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  [1m[36mActsAsTaggableOn::Tag Load (1.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'performers' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 1], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  Rendered admin/films/_tag.html.erb (0.5ms)
+  [1m[36mActsAsTaggableOn::Tag Load (2.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'staffs' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 1], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:27
+  Rendered admin/films/_tag.html.erb (0.2ms)
+  [1m[36mActsAsTaggableOn::Tag Load (2.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'genres' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 1], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:28
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tagging Load (2.6ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 2], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  [1m[36mActsAsTaggableOn::Tag Load (2.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'performers' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 2], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (2.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'staffs' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 2], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:27
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (5.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'genres' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 2], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:28
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tagging Load (1.4ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 3], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  [1m[36mActsAsTaggableOn::Tag Load (2.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'performers' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 3], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (1.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'staffs' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 3], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:27
+  Rendered admin/films/_tag.html.erb (0.5ms)
+  [1m[36mActsAsTaggableOn::Tag Load (2.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'genres' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 3], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:28
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tagging Load (1.9ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ?[0m  [["taggable_id", 5], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  [1m[36mActsAsTaggableOn::Tag Load (2.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'performers' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 5], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:26
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (2.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'staffs' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 5], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:27
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (1.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'genres' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 5], ["taggable_type", "Film"]]
+  ↳ app/views/admin/films/index.html.erb:28
+  Rendered admin/films/_tag.html.erb (0.1ms)
+  Rendered admin/films/index.html.erb within layouts/application (640.0ms)
+Completed 200 OK in 2275ms (Views: 2155.2ms | ActiveRecord: 40.6ms)
+
+
+Started GET "/admin/tagsinput.js" for 10.0.2.2 at 2019-07-19 09:15:53 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/tagsinput.css" for 10.0.2.2 at 2019-07-19 09:15:53 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/admin/tagsinput.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  
+ActionController::RoutingError (No route matches [GET] "/admin/tagsinput.css"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/admin/tagsinput.js" for 10.0.2.2 at 2019-07-19 09:15:53 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/admin/tagsinput.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
