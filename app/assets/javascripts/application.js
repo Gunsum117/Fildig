@@ -14,10 +14,9 @@
 //= require jquery3
 //= require jquery_ujs
 //= require jquery-ui
-//= require tag-it
 //= require turbolinks
 //= require activestorage
 //= require popper
 //= require bootstrap-sprockets
+//= require tagsinput
 //= require_tree .
-

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     # on: :memberはresources以外のアクションへのルーティングも定義してくれる
   end
 
-  resources :films,			only:[:new, :create, :index, :show, :edit, :update, :destroy] do
+  resources :films,			only:[:index, :show, :edit, :update, :destroy] do
   	resources :wishes,			only:[:create, :destroy]
   	resources :dones,			only:[:create, :destroy]
   	resources :mybests,			only:[:create, :destroy]

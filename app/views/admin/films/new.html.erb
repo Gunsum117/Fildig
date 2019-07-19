@@ -2,14 +2,29 @@ Admin
 <h1>Films作成</h1>
 
 
-<%= form_with model: @film do |f| %>
+<%= form_with model: @film, url: admin_films_path do |f| %>
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
 
+    <div>
+    <%= f.label :image %>
+    <%= f.attachment_field :image %>
+	</div>
+
     <div class="film-tags-field">
 	<%= f.label :performer_list %>
-    <%= f.text_field :performer_list, value: @film.performer_list.join(',') %>
+    <%= f.text_field :performer_list, value: @film.performer_list.join(','), "data-role" => "tagsinput" %>
+    </div>
+
+    <div class="film-tags-field">
+	<%= f.label :staff_list %>
+    <%= f.text_field :staff_list, value: @film.staff_list.join(','), "data-role" => "tagsinput"  %>
+    </div>
+
+    <div class="film-tags-field">
+	<%= f.label :genre_list %>
+    <%= f.text_field :genre_list, value: @film.genre_list.join(','), "data-role" => "tagsinput"  %>
     </div>
 
     <div>
@@ -19,7 +34,7 @@ Admin
 
 	<div>
     <%= f.label :release %>
-    <%= f.text_field :release %>
+    <%= f.date_field :release %>
 	</div>
 
 	<div>

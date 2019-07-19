@@ -3,6 +3,8 @@ class Film < ApplicationRecord
 	acts_as_taggable_on :interests, :performers, :staffs, :genres
 	acts_as_taggable
 
+	attachment :image
+
 	has_many :reviews, 	dependent: :destroy
 	has_many :wishes, 	dependent: :destroy
 	has_many :dones, 	dependent: :destroy

@@ -7,24 +7,24 @@ class Admin::FilmsController < ApplicationController
   end
 
   def create
-    @film = current_user.films.build(films_params)
-    tag_list = params[:tag_list].split(",")
+    @film = Film.new(film_params)
     if @film.save
-      @film.save_tags(tag_list)
       flash[:success] = "映画を作成しました"
-      redirect_to articles_url
-    else
-      render 'tags/new'
+      redirect_to new_admin_film_path
+    else flash[:warning] = "映画を作成できませんでした"
+         redirect_to new_admin_film_path
     end
   end
 
   def index
+    @films = Film.all
   end
 
   def show
   end
 
   def edit
+    @film = Film.find(params[:id])
   end
 
   def update
@@ -35,7 +35,7 @@ class Admin::FilmsController < ApplicationController
 
   private
   def film_params
-      params.require(:film).permit(:title, :based, :release, :time, :language, :perfomer_list, :staff_list, :genre_list,)
+      params.require(:film).permit(:title, :image, :based, :release, :time, :language, :performer_list, :staff_list, :genre_list)
   end
 
 end
