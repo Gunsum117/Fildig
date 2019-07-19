@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  root "films#index"
-
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
@@ -29,7 +27,7 @@ Rails.application.routes.draw do
     # on: :memberはresources以外のアクションへのルーティングも定義してくれる
   end
 
-  resources :films,			only:[:new, :create, :index, :show, :edit, :update, :destroy] do
+  resources :films,			only:[:index, :show, :edit, :update, :destroy] do
   	resources :wishes,			only:[:create, :destroy]
   	resources :dones,			only:[:create, :destroy]
   	resources :mybests,			only:[:create, :destroy]
@@ -41,4 +39,6 @@ Rails.application.routes.draw do
   resources :tags,			only:[:create, :index, :show, :update]
   resources :contacts,		only:[:new, :create, :destroy]
 
+
+  root "films#index"
 end

@@ -2,16 +2,12 @@ class FilmsController < ApplicationController
 
   before_action :authenticate_user!, only: [:index, :show]
 
-  def new
-  end
-
-  def create
-  end
-
   def index
+    @films = Film.all
   end
 
   def show
+    @film = Film.find(params[:id])
   end
 
   def edit

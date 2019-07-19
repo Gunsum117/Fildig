@@ -1,3 +1,13 @@
 Admin
 <h1>Films#show</h1>
 <p>Find me in app/views/films/show.html.erb</p>
+
+
+<%= @film.title %>
+<%= @film.based %>
+<%= @film.release %>
+<%= @film.time %>
+
+<div>
+<%= render 'admin/films/tag', tag_list: @film.performer_list %>
+</div>
