@@ -1,5 +1,4 @@
-Admin
-<h1>Films#index</h1>
+<h1>映画一覧</h1>
 
 
 <table class= "table">
@@ -23,9 +22,9 @@ Admin
       <tr>
       	<td><%= attachment_image_tag film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '50x50' %></td>
         <td><%= film.title %></td>
-        <td><%= render 'admin/films/tag', tag_list: film.performer_list %></td>
-        <td><%= render 'admin/films/tag', tag_list: film.staff_list %></td>
-        <td><%= render 'admin/films/tag', tag_list: film.genre_list %></td>
+        <td><%= render 'admin/films/performer_tag', performer_tag_list: film.performer_list %></td>
+        <td><%= render 'admin/films/staff_tag', staff_tag_list: film.staff_list %></td>
+        <td><%= render 'admin/films/genre_tag', genre_tag_list: film.genre_list %></td>
         <td><%= film.based %></td>
         <td><%= film.release %></td>
         <td><%= film.time %></td>
