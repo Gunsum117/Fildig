@@ -28,6 +28,14 @@ class Admin::FilmsController < ApplicationController
   end
 
   def update
+    @film = Film.find(params[:id])
+    if @film.update(film_params)
+       flash[:success] = '"' + @film.title + '"を編集しました'
+       redirect_to admin_films_path
+    else
+       flash[:warning] = "商品編集に失敗しました"
+       redirect_to admin_films_path
+    end
   end
 
   def destroy
