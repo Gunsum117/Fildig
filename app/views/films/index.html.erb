@@ -1,16 +1,27 @@
 
-<div class="row">
+<div class="card-columns">
 
-<div class="col-md-4">
-
-</div>
-
-<div class="col-md-4">
-<h1>Films#index</h1>
-<p>Find me in app/views/films/index.html.erb</p>
-</div>
-
-<div class="col-md-4">
-</div>
+	<% @films.each do |film| %>
+	  <a href="<%= film_path(film) %>" class="card" style="max-width: 18rem;">
+	      	<p class="card-text text-center"><%= attachment_image_tag film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '150x200' %></p>
+	        <p class="card-text"><%= film.title %></p>
+	        <p class="card-text"><%= film.release %>年</p>
+	        <p class="card-text">
+	        	<% film.performer_list.each do |tag| %>
+					<span class="badge badge-success"><%= tag %></span>
+				<% end %>
+	        </p>
+	        <p class="card-text">
+	        	<% film.staff_list.each do |tag| %>
+					<span class="badge badge-info"><%= tag %></span>
+				<% end %>
+	        </p>
+	        <p class="card-text">
+	        	<% film.genre_list.each do |tag| %>
+					<span class="badge badge-primary"><%= tag %></span>
+				<% end %>
+	        </p>
+	  </a>
+	<% end %>
 
 </div>
