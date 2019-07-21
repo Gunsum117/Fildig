@@ -6,6 +6,11 @@ class ReviewsController < ApplicationController
   end
 
   def create
+  	film = Film.find(params[:film_id])
+  	review = current_user.reviews.new(review_params)
+  	review.film_id = film.id
+  	review.save
+  	redirect_to film_path(film)
   end
 
   def edit
@@ -16,5 +21,10 @@ class ReviewsController < ApplicationController
 
   def destroy
   end
+
+  private
+    def review_params
+        params.require(:review).permit(:title, :star, :body)
+    end
 
 end

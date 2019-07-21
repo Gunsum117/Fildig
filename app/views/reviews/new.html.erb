@@ -1,2 +1,28 @@
-<h1>Reviews#new</h1>
+<h1>Reviews#newaaaaa</h1>
 <p>Find me in app/views/reviews/new.html.erb</p>
+
+
+<%= form_with model: @review, url: film_reviews_path do |f| %>
+
+
+<div>
+<%= f.label :title %>
+<%= f.text_field :title %>
+</div>
+
+<div>
+<%= f.label :star %>
+<%= f.text_field :star %>
+</div>
+
+
+<div>
+<%= f.label :body %>
+<%= f.text_field :body %>
+</div>
+
+<div>
+<%= f.submit "作成", class: 'btn btn-primary'%>
+</div>
+
+<% end %>
