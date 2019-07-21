@@ -1,4 +1,4 @@
-<h1>Reviews#newaaaaa</h1>
+<h1>レビューを投稿する</h1>
 <p>Find me in app/views/reviews/new.html.erb</p>
 
 
@@ -11,14 +11,13 @@
 </div>
 
 <div>
-<%= f.label :star %>
-<%= f.text_field :star %>
-</div>
-
-
-<div>
 <%= f.label :body %>
 <%= f.text_field :body %>
+</div>
+
+<div class="field" id="star">
+<%= f.label :star %>
+<%= f.hidden_field :star, id: :review_star %>
 </div>
 
 <div>
@@ -26,3 +25,15 @@
 </div>
 
 <% end %>
+
+
+<script>
+$('#star').raty({
+  size     : 70,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  starHalf: '<%= asset_path('star-half.png') %>',
+  scoreName: 'review[star]',
+  half: true,
+});
+</script>

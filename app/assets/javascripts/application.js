@@ -19,4 +19,5 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require tagsinput
+//= require raty
 //= require_tree .

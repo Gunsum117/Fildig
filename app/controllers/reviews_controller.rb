@@ -20,6 +20,14 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = Review.find(params[:film_id])
+    if @review.destroy
+       flash[:success] = '"' + @review.title + '"を削除しました'
+       redirect_to film_path(@review.film_id)
+    else
+       flash[:warning] = "削除に失敗しました"
+       redirect_to film_path(@review.film_id)
+    end
   end
 
   private
