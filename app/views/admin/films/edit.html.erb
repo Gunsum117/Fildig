@@ -1,8 +1,7 @@
 Admin
 <h1>Films#edit</h1>
-<p>Find me in app/views/films/edit.html.erb</p>
 
-<%= form_with(model: @film, url: admin_film_path(@film)) do |f| %>
+<%= form_with model: @film,, local: true, url: admin_film_path(@film) do |f| %>
 <%#= form_for @film, url: admin_film_path(@film) do |f| %>
 
   	<div class="field">

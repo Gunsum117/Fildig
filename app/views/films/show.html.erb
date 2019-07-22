@@ -9,9 +9,9 @@
 			<div class="card-body">
 				<h4 class="card-title"><%= @film.title %></h4>
 				<p class="card-text">公開年：<%= @film.release %> ／ 言語：<%= @film.language %> ／ 上映時間：<%= @film.time %>分</p>
-				<div class="card-body">
-					<p class="card-text">あらすじ</p>
-					<p class="card-text">card は柔軟で拡張ができるコンテナです。headers や footers のオプション, 多様なコンテンツ, 背景色, 表示オプション が含まれています。Bootstrap3の panels, wells, thumbnails は card に置きかわります。これらのコンポーネントの機能は card のクラスとして利用できます。カードは少ないマークアップとスタイルで構築されていますが, 多くのカスタマイズが可能です。Flexboxで構築されているため, 簡単に配置ができ, 他のコンポーネントと組み合わせ可能です。 デフォルトでは margin の設定がないので, 必要に応じて spacing utilities を使用します。以下は,幅が固定されたカードの例です。カードには固定幅がないので, 親要素の幅に広がります。これは sizing options でカスタマイズ可能です。
+				<div class="card">
+					<p class="card-header">あらすじ</p>
+					<p class="card-body">card は柔軟で拡張ができるコンテナです。headers や footers のオプション, 多様なコンテンツ, 背景色, 表示オプション が含まれています。Bootstrap3の panels, wells, thumbnails は card に置きかわります。これらのコンポーネントの機能は card のクラスとして利用できます。カードは少ないマークアップとスタイルで構築されていますが, 多くのカスタマイズが可能です。Flexboxで構築されているため, 簡単に配置ができ, 他のコンポーネントと組み合わせ可能です。 デフォルトでは margin の設定がないので, 必要に応じて spacing utilities を使用します。以下は,幅が固定されたカードの例です。カードには固定幅がないので, 親要素の幅に広がります。これは sizing options でカスタマイズ可能です。
 					</p>
 				</div>
 			</div>
@@ -48,32 +48,55 @@
 	</div>
 	<div class="col-10">
 		<div class="card">
+			<div class="card-header">
+				<h5><%= @film.reviews.count %>件のレビュー</h5>
+			</div>
 			<% @film.reviews.each do |review| %>
 				<div class="card-body">
 					<h5 class="card-title"><%= review.title %></h5>
 					<p class="card-text"><%= review.user.name %></p>
-					<h4 class="mb-3">評価：<%= review.star %>点 </h4>
-					<div id="star-rate-<%= review.id %>"></div>
-					<script>
-					  $('#star-rate-<%= review.id %>').raty({
-					    size: 36,
-					    starOff:  '<%= asset_path('star-off.png') %>',
-					    starOn : '<%= asset_path('star-on.png') %>',
-					    starHalf: '<%= asset_path('star-half.png') %>',
-					    half: true,
-					    readOnly: true,
-					    score: <%= review.star %>,
-					  });
-					</script>
+					<div id="star-rate-<%= review.id %>">評価：<%= review.star %>点</div>
+						<script>
+						  $('#star-rate-<%= review.id %>').raty({
+						    size: 36,
+						    starOff:  '<%= asset_path('star-off.png') %>',
+						    starOn : '<%= asset_path('star-on.png') %>',
+						    starHalf: '<%= asset_path('star-half.png') %>',
+						    half: true,
+						    readOnly: true,
+						    score: <%= review.star %>,
+						  });
+						</script>
 					<div class="card-body">
-						<p class="card-text">card は柔軟で拡張ができるコンテナです。headers や footers のオプション, 多様なコンテンツ, 背景色, 表示オプション が含まれています。Bootstrap3の panels, wells, thumbnails は card に置きかわります。これらのコンポーネントの機能は card のクラスとして利用できます。カードは少ないマークアップとスタイルで構築されていますが, 多くのカスタマイズが可能です。Flexboxで構築されているため, 簡単に配置ができ, 他のコンポーネントと組み合わせ可能です。 デフォルトでは margin の設定がないので, 必要に応じて spacing utilities を使用します。以下は,幅が固定されたカードの例です。カードには固定幅がないので, 親要素の幅に広がります。これは sizing options でカスタマイズ可能です。
-						</p>
+						<p class="card-text"><%= review.body %></p>
 					</div>
 					<% if review.user == current_user %>
-						<div><%= link_to 'Destroy', film_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %>
+						<%= link_to '編集', edit_film_review_path(review.film_id,review), class: "btn btn-light border border-seconday"%>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+	  						削除
+						</button>
+						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						  <div class="modal-dialog" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+						        レビューを削除しますか？
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+						        	やめる
+						        </button>
+						        <%= link_to '削除する', film_review_path(review), method: :delete, class: "btn btn-danger"%>
+						      </div>
+						    </div>
+						  </div>
 						</div>
 					<% end %>
-			</div>
+				</div>
 			<% end %>
 		</div>
 	</div>
