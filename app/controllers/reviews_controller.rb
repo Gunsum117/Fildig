@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def new
   	@review = Review.new
@@ -49,5 +50,10 @@ class ReviewsController < ApplicationController
     def review_params
         params.require(:review).permit(:title, :star, :body)
     end
+
+  	def correct_user
+	    @review = Review.find(params[:id])
+	    redirect_to film_path(@review.film_id) unless @review.user == current_user
+  	end
 
 end
