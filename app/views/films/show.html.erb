@@ -11,7 +11,8 @@
 				<p class="card-text">公開年：<%= @film.release %> ／ 言語：<%= @film.language %> ／ 上映時間：<%= @film.time %>分</p>
 				<div class="card">
 					<p class="card-header">あらすじ</p>
-					<p class="card-body">card は柔軟で拡張ができるコンテナです。headers や footers のオプション, 多様なコンテンツ, 背景色, 表示オプション が含まれています。Bootstrap3の panels, wells, thumbnails は card に置きかわります。これらのコンポーネントの機能は card のクラスとして利用できます。カードは少ないマークアップとスタイルで構築されていますが, 多くのカスタマイズが可能です。Flexboxで構築されているため, 簡単に配置ができ, 他のコンポーネントと組み合わせ可能です。 デフォルトでは margin の設定がないので, 必要に応じて spacing utilities を使用します。以下は,幅が固定されたカードの例です。カードには固定幅がないので, 親要素の幅に広がります。これは sizing options でカスタマイズ可能です。
+					<p class="card-body">
+						card は柔軟で拡張ができるコンテナです。headers や footers のオプション, 多様なコンテンツ, 背景色, 表示オプション が含まれています。Bootstrap3の panels, wells, thumbnails は card に置きかわります。これらのコンポーネントの機能は card のクラスとして利用できます。カードは少ないマークアップとスタイルで構築されていますが, 多くのカスタマイズが可能です。Flexboxで構築されているため, 簡単に配置ができ, 他のコンポーネントと組み合わせ可能です。 デフォルトでは margin の設定がないので, 必要に応じて spacing utilities を使用します。以下は,幅が固定されたカードの例です。カードには固定幅がないので, 親要素の幅に広がります。これは sizing options でカスタマイズ可能です。
 					</p>
 				</div>
 			</div>
@@ -43,13 +44,24 @@
 	</div>
 </div>
 
+<% starsum = 0 %>
+
+
+<% @film.reviews.each do |review| %>
+	<% review.star.to_i %>
+	<% starsum += review.star.to_f %>
+<% end %>
+
+<% star_av = starsum.to_f / @film.reviews.count %>
+
 <div class="row">
 	<div class="col">
 	</div>
 	<div class="col-10">
 		<div class="card">
 			<div class="card-header">
-				<h5><%= @film.reviews.count %>件のレビュー</h5>
+				<h5><%= @film.reviews.count %>件のレビュー</h5><br>
+				<h5><div id="star_av_image">平均スコア：<%= star_av %>点</h5>
 			</div>
 			<% @film.reviews.each do |review| %>
 				<div class="card-body">
@@ -103,3 +115,16 @@
 	<div class="col">
 	</div>
 </div>
+
+
+<script>
+  $('#star_av_image').raty({
+    size: 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: <%= star_av %>,
+  });
+</script>
