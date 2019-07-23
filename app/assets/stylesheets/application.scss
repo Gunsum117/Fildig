@@ -19,14 +19,34 @@
 @import "bootstrap";
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
+ 	margin: 0;
+ 	padding: 0;
+ 	box-sizing: border-box;
+}
+
+body{
+	background-color: #e3e0d1;
+}
+
+.navbar{
+	background-color: #e3d595;
+	color: white;
 }
 
 .card-columns {
   @include media-breakpoint-only(xl) {
     column-count: 5;
   }
+}
+
+.card{
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+/*    background-color: #ffe9a9;*/
+}
+
+.card_fadecolor{
+	background-color: #e2dec5;
 }

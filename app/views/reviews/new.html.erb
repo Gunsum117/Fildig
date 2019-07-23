@@ -1,32 +1,66 @@
-<h1>レビューを投稿する</h1>
+<div class="row">
 
-<%= form_with model: @review, local: true, url: film_reviews_path do |f| %>
-
-	<div>
-		<%= f.label :title %>
-		<%= f.text_field :title %>
+	<div class="col-4">
+	  <div class="card">
+	      	<p class="card-body text-center"><%= attachment_image_tag @film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '200x300' %></p>
+	        <h5 class="card-text text-center"><%= @film.title %></h5>
+	        <p class="card-text">
+	        	<% @film.performer_list.each do |tag| %>
+					<span class="badge badge-success"><%= tag %></span>
+				<% end %>
+	        </p>
+	        <p class="card-text">
+	        	<% @film.staff_list.each do |tag| %>
+					<span class="badge badge-info"><%= tag %></span>
+				<% end %>
+	        </p>
+	        <p class="card-text">
+	        	<% @film.genre_list.each do |tag| %>
+					<span class="badge badge-primary"><%= tag %></span>
+				<% end %>
+	        </p>
+	  </div>
 	</div>
 
-	<div>
-		<%= f.label :body %>
-		<%= f.text_area :body %>
+	<div class="col-md-8">
+		<div class="card">
+			<h3 class="card-header">レビューを投稿する
+			</h3>
+
+				<%= form_with model: @review, local: true, url: film_reviews_path do |f| %>
+
+					<div class="card-body">
+						<%= f.label :star, "スコア"%>
+						<div class="field" id="star">
+							<%= f.hidden_field :star, id: :review_star %>
+						</div>
+					</div>
+
+					<div class="card-body">
+						<%= f.label :title, "タイトル", class: 'card-title' %>
+						<%= f.text_field :title , class: 'form-control rounded' %>
+					</div>
+
+					<div class="card-body">
+						<%= f.label :body, "本文", class: 'card-title' %>
+						<%= f.text_area :body, class: 'form-control rounded', size: "60x10" %>
+					</div>
+
+
+					<div class="card-text text-center">
+						<%= link_to "戻る", film_path(@film), class: "btn btn-light border border-seconday"%>
+						<%= f.submit "投稿", class: 'btn btn-primary'%>
+					</div>
+
+				<% end %>
+		</div>
 	</div>
 
-	<div class="field" id="star">
-		<%= f.label :star %>
-		<%= f.hidden_field :star, id: :review_star %>
-	</div>
-
-	<div>
-		<%= f.submit "作成", class: 'btn btn-primary'%>
-	</div>
-
-<% end %>
-
+</div>
 
 <script>
 $('#star').raty({
-  size     : 70,
+  size     : 300,
   starOff:  '<%= asset_path('star-off.png') %>',
   starOn : '<%= asset_path('star-on.png') %>',
   starHalf: '<%= asset_path('star-half.png') %>',
