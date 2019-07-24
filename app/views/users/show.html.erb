@@ -1,15 +1,115 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<br>
 
-  <hr>
-  <p><%= @user.name %>さん</p>
 
-<p><%=link_to "フォロー", follows_user_path(@user.id) %></p>
-<p><%=link_to "フォロワー", followers_user_path(@user.id) %></p>
-<% if current_user != @user %>
-    <% if @user.followed_by?(current_user) %>
-        <p><%=link_to "フォロー済み", user_relationship_path(@user.id), method: :delete %></p>
-    <% else %>
-        <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
-    <% end %>
-<% end %>
+<div class="row">
+	<div class="col-2">
+		<h2>マイページ</h2>
+		<p><%= @user.name %>さん</p>
+		<div class="btn-group  btn-block">
+			<%=link_to follows_user_path(@user.id) do %>
+				<button type="button" class="btn btn-light btn-sm border">
+					フォロー<br>
+					<span class="badge badge-primary"><%= @user.active_relationships.count %></span>
+				</button>
+			<% end %>
+			<%=link_to followers_user_path(@user.id) do %>
+				<button type="button" class="btn btn-light btn-sm border">
+					フォロワー<br>
+					<span class="badge badge-primary"><%= @user.passive_relationships.count %></span>
+				</button>
+			<% end %>
+		</div>
+		<% if current_user != @user %>
+		    <% if @user.followed_by?(current_user) %>
+		        <p class="btn btn-secondary"><%=link_to "フォロー済み", user_relationship_path(@user.id), method: :delete %></p>
+		    <% else %>
+		        <p class="btn btn-secondary"><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+		    <% end %>
+		<% end %>
+	</div>
+
+
+	<div class="col-10">
+		<nav>
+		  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+		    <a class="nav-item nav-link active text-reset border border-white" id="nav-wish-tab" data-toggle="tab" href="#nav-wish" role="tab" aria-controls="nav-wish" aria-selected="true">観たい!</a>
+		    <a class="nav-item nav-link text-reset border border-white" id="nav-done-tab" data-toggle="tab" href="#nav-done" role="tab" aria-controls="nav-done" aria-selected="false">観た!</a>
+		    <a class="nav-item nav-link text-reset border border-white" id="nav-mybest-tab" data-toggle="tab" href="#nav-mybest" role="tab" aria-controls="nav-mybest" aria-selected="false">Mybest!</a>
+		  </div>
+		</nav>
+		<div class="tab-content" id="nav-tabContent">
+		  <div class="tab-pane fade show active" id="nav-wish" role="tabpanel" aria-labelledby="nav-home-tab">
+		  	<div class="card-columns">
+				<% @wishes.each do |wish| %>
+					<a href="<%= film_path(wish.film_id) %>" class="card text-reset card-hover" style="max-width: 18rem;">
+						<div class="card-body">
+						  	<p class="card-text text-center"><%= attachment_image_tag wish.film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '100x150' %></p>
+						    <div ><%= wish.film.title %></div>
+						    <p class="card-text"><%= wish.film.release %>年</p>
+						</div>
+					</a>
+					<script>
+						$(function(){
+						    $('.card').mouseover(function(){
+						        $(this).addClass('card_fadecolor');
+						    });
+						    $('.card').mouseout(function(){
+						        $(this).removeClass('card_fadecolor');
+						    });
+						});
+					</script>
+				<% end %>
+			</div>
+		  </div>
+		  <div class="tab-pane fade" id="nav-done" role="tabpanel" aria-labelledby="nav-done-tab">
+		  	<div class="card-columns">
+				<% @dones.each do |done| %>
+					<a href="<%= film_path(done.film_id) %>" class="card text-reset card-hover" style="max-width: 18rem;">
+						<div class="card-body">
+						  	<p class="card-text text-center"><%= attachment_image_tag done.film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '100x150' %></p>
+						    <div ><%= done.film.title %></div>
+						    <p class="card-text"><%= done.film.release %>年</p>
+						</div>
+					</a>
+					<script>
+						$(function(){
+						    $('.card').mouseover(function(){
+						        $(this).addClass('card_fadecolor');
+						    });
+						    $('.card').mouseout(function(){
+						        $(this).removeClass('card_fadecolor');
+						    });
+						});
+					</script>
+				<% end %>
+			</div>
+		  </div>
+		  <div class="tab-pane fade" id="nav-mybest" role="tabpanel" aria-labelledby="nav-mybest-tab">
+		  	<div class="card-columns">
+				<% @mybests.each do |mybest| %>
+					<a href="<%= film_path(mybest.film_id) %>" class="card text-reset card-hover" style="max-width: 18rem;">
+						<div class="card-body">
+						  	<p class="card-text text-center"><%= attachment_image_tag mybest.film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '100x150' %></p>
+						    <div ><%= mybest.film.title %></div>
+						    <p class="card-text"><%= mybest.film.release %>年</p>
+						</div>
+					</a>
+					<script>
+						$(function(){
+						    $('.card').mouseover(function(){
+						        $(this).addClass('card_fadecolor');
+						    });
+						    $('.card').mouseout(function(){
+						        $(this).removeClass('card_fadecolor');
+						    });
+						});
+					</script>
+				<% end %>
+			</div>
+		  </div>
+		</div>
+	</div>
+
+
+
+</div>

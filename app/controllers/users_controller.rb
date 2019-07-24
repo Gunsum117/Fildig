@@ -4,6 +4,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @wishes = Wish.where(user_id: @user.id)
+    @dones = Done.where(user_id: @user.id)
+    @mybests = Mybest.where(user_id: @user.id)
   end
 
   def edit

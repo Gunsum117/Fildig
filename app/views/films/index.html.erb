@@ -30,21 +30,21 @@
 				    score: <%= star_av %>,
 				  });
 				</script>
-			    <div ><%= film.title %></div>
+			    <div><%= film.title %></div>
 			    <p class="card-text"><%= film.release %>年</p>
 			    <p class="card-text">
 			    	<% film.performer_list.each do |tag| %>
-						<span class="badge badge-light border"><%= tag %></span>
+						<span class="badge badge-info border"><%= tag %></span>
 					<% end %>
 			    </p>
 			    <p class="card-text">
 			    	<% film.staff_list.each do |tag| %>
-						<span class="badge badge-secondary"><%= tag %></span>
+						<span class="badge badge-info"><%= tag %></span>
 					<% end %>
 			    </p>
 			    <p class="card-text">
 			    	<% film.genre_list.each do |tag| %>
-						<span class="badge badge-dark"><%= tag %></span>
+						<span class="badge badge-info"><%= tag %></span>
 					<% end %>
 			    </p>
 			</div>

@@ -78,19 +78,19 @@
 			        <li class="list-group-item">
 			        	<p>出演者</p>
 			        	<% @film.performer_list.each do |tag| %>
-							<span class="badge badge-light border"><%= tag %></span>
+							<span class="badge badge-info border"><%= tag %></span>
 						<% end %>
 		        	</li>
 		        	<li class="list-group-item">
 		        		<p>制作</p>
 			        	<% @film.staff_list.each do |tag| %>
-							<span class="badge badge-secondary"><%= tag %></span>
+							<span class="badge badge-info"><%= tag %></span>
 						<% end %>
 		        	</li>
 		        	<li class="list-group-item">
 		        		<p>ジャンル</p>
 			        	<% @film.genre_list.each do |tag| %>
-							<span class="badge badge-dark"><%= tag %></span>
+							<span class="badge badge-info"><%= tag %></span>
 						<% end %>
 		        	</li>
 	        	</ul>
