@@ -23,7 +23,7 @@ class Film < ApplicationRecord
 	end
 
 	def mybested_by?(user)
-	    dones.where(user_id: user.id).exists?
+	    mybests.where(user_id: user.id).exists?
 	end
 
 
