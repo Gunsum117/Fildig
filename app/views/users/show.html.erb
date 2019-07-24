@@ -1,31 +1,48 @@
 <br>
 
-
 <div class="row">
 	<div class="col-2">
-		<h2>マイページ</h2>
-		<p><%= @user.name %>さん</p>
-		<div class="btn-group  btn-block">
-			<%=link_to follows_user_path(@user.id) do %>
-				<button type="button" class="btn btn-light btn-sm border">
-					フォロー<br>
-					<span class="badge badge-primary"><%= @user.active_relationships.count %></span>
-				</button>
-			<% end %>
-			<%=link_to followers_user_path(@user.id) do %>
-				<button type="button" class="btn btn-light btn-sm border">
-					フォロワー<br>
-					<span class="badge badge-primary"><%= @user.passive_relationships.count %></span>
-				</button>
-			<% end %>
-		</div>
-		<% if current_user != @user %>
-		    <% if @user.followed_by?(current_user) %>
-		        <p class="btn btn-secondary"><%=link_to "フォロー済み", user_relationship_path(@user.id), method: :delete %></p>
-		    <% else %>
-		        <p class="btn btn-secondary"><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
-		    <% end %>
+		<% if current_user == @user %>
+			<h2>マイページ</h2>
 		<% end %>
+		<div class="text-center">
+			<%= attachment_image_tag @user, :image, class:"profile-image", fallback: "no_image_profile.jpg", size: '150x150' %>
+		</div>
+		<div class="card-text">
+			<p class="text-center"><%= @user.name %>さん</p>
+			<div class="btn-group  btn-block">
+				<%=link_to follows_user_path(@user.id) do %>
+					<button type="button" class="btn btn-light btn-sm border">
+						フォロー<br>
+						<span class="badge badge-primary"><%= @user.active_relationships.count %></span>
+					</button>
+				<% end %>
+				<%=link_to followers_user_path(@user.id) do %>
+					<button type="button" class="btn btn-light btn-sm border">
+						フォロワー<br>
+						<span class="badge badge-primary"><%= @user.passive_relationships.count %></span>
+					</button>
+				<% end %>
+			</div>
+			<br>
+			<div>
+				<% if current_user != @user %>
+				    <% if @user.followed_by?(current_user) %>
+				        <%=link_to user_relationship_path(@user.id), method: :delete do %>
+				        	<button type="button" class="btn btn-primary btn-block">フォロー中</button>
+				        <% end %>
+				    <% else %>
+				        <%=link_to user_relationships_path(@user.id), method: :post do %>
+							<button type="button" class="btn btn-outline-primary btn-block">フォローする</button>
+				        <% end %>
+				    <% end %>
+				<% end %>
+			</div>
+		</div>
+		<br>
+		<% if current_user == @user %>
+	    	<%=link_to"プロフィール編集", edit_user_path(@user), class:"btn btn-secondary btn-block" %>
+	    <% end %>
 	</div>
 
 

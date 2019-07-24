@@ -124,14 +124,14 @@
 						<h5><%= @film.reviews.count %>件のユーザーレビュー</h5><br>
 						<h5><div id="star_av_image">平均スコア：<%= star_av %>点</div></h5>
 					</div>
-<!-- 					<div class="col">
-						<%= link_to "レビューを投稿する",new_film_review_path(@film), class:"btn btn-secondary btn-block btn-lg" %>
-					</div> -->
 				</div>
 			</div>
 			<% @film.reviews.each do |review| %>
 				<div class="card-body">
-					<p class="card-text"><%= link_to review.user.name , user_path(review.user_id) %></p>
+					<p class="card-text">
+						<%= attachment_image_tag review.user, :image, class:"profile-image", fallback: "no_image_profile.jpg", size: '40x40' %>
+						<%= link_to review.user.name, user_path(review.user_id) %>
+					</p>
 					<h5 class="card-title"><%= review.title %></h5>
 					<div id="star-rate-<%= review.id %>">評価：<%= review.star %>点</div>
 						<script>
