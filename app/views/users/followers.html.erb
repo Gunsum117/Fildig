@@ -1,14 +1,46 @@
-<h1>Users#followers</h1>
-<p>Find me in app/views/users/followers.html.erb</p>
+<div class="row">
+	<div class="col">
+	</div>
 
-<% @users.each do |user| %>
-  <hr>
-  <p><span>email: </span><%= link_to user.email, user_path(user.id) %></p>
-    <% if current_user != user %>
-        <% if user.followed_by?(current_user) %>
-            <p><%=link_to "フォロー済み", user_relationship_path(user.id), method: :delete %></p>
-        <% else %>
-            <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
-        <% end %>
-    <% end %>
-<% end %>
+	<div class="col-8">
+		<div class="card">
+			<div class="card-header">
+				<h3><%= @user.name %>さんのフォロワー</h3>
+			</div>
+			<div class="card-body">
+				<table class="table">
+					<% @users.each do |user| %>
+						<tr>
+							<td><%= attachment_image_tag user, :image, class:"profile-image", fallback: "no_image_profile.jpg", size: '40x40' %>
+							</td>
+							<td><%= link_to user.name, user_path(user.id) %></td>
+							<td><span class="badge badge-warning">観たい!<br>
+								<%= user.wishes.count %></span></td>
+							<td><span class="badge badge-warning">観た!<br>
+								<%= user.dones.count %></span></td>
+							<td><span class="badge badge-warning">Mybest!<br>
+								<%= user.mybests.count %></span></td>
+							<td>
+							<% if current_user != user %>
+							    <% if user.followed_by?(current_user) %>
+							        <%=link_to user_relationship_path(user.id), method: :delete do %>
+							        	<button class="btn btn-primary">フォロー中</button>
+							        <% end %>
+							    <% else %>
+							        <%=link_to user_relationships_path(user.id), method: :post do %>
+										<button class="btn btn-outline-primary">フォローする</button>
+							        <% end %>
+							    <% end %>
+							<% end %>
+							</td>
+						</tr>
+					<% end %>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+	</div>
+
+</div>
