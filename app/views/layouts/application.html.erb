@@ -21,7 +21,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand navbar-dark" >
+    <nav class="navbar navbar-expand" >
       <div class="container">
         <ui class="navbar-brand">
           <%= link_to "Fildig", root_path, class: "nav-link text-white" %>
@@ -31,10 +31,25 @@
 
           <% if admin_signed_in? %>
             <li class="nav-item">
+              <%= link_to "ユーザーリスト", admin_users_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-link text-white">
+              ｜
+            </li>
+            <li class="nav-item">
+              <%= link_to "映画追加", new_admin_film_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-link text-white">
+              ｜
+            </li>
+            <li class="nav-item">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-white" %>
             </li>
 
           <% elsif user_signed_in? %>
+            <%= render "layouts/search_form" %>
+            <li class="nav-link text-white">
+            </li>
             <li class="nav-item">
               <%= link_to "マイページ", user_path(current_user), class: "nav-link text-white" %>
             </li>
@@ -46,6 +61,9 @@
             </li>
 
           <% else %>
+            <%= render "layouts/search_form" %>
+            <li class="nav-link text-white">
+            </li>
             <li class="nav-item">
               <%= link_to "ログイン", new_user_session_path, class: "nav-link text-white" %>
             </li>

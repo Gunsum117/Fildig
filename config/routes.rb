@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   	resources :films,		only:[:new, :create, :index, :show, :edit, :update, :destroy]
   	resources :tags,		only:[:create, :index, :show, :update]
   	resources :reviews,		only:[:edit, :update, :destroy]
+  	get "search_films" => "films#search",as: 'search_films'
   end
 
 
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   	resources :relationships,	only:[:create, :destroy]
 	get :follows, on: :member
     get :followers, on: :member
-    # on: :memberはresources以外のアクションへのルーティングも定義してくれる
+    # on: :memberはresources以外のアクションへのルーティングも定義
   end
 
   resources :films,			only:[:index, :show, :edit, :update, :destroy] do
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
   		resources :good_reviews,	only:[:create, :destroy]
   	end
   end
+  get "search_films" => "films#search",as: 'search_films'
 
   resources :tags,			only:[:create, :index, :show, :update]
   resources :contacts,		only:[:new, :create, :destroy]

@@ -1,0 +1,39 @@
+<div class="row">
+
+  <div class="col-12">
+    <h1>映画一覧:検索結果</h1>
+    <p class="nav-item">
+      <%= form_tag admin_search_films_path, :method => 'get', class:"form-inline" do %>
+        <%= text_field_tag :search, "", class:"form-control rounded-pill", size: "40",placeholder: "映画名/公開年/言語" %>
+        <%= submit_tag "検索", class:"btn btn-light", :title => nil %>
+      <% end %>
+    </p>
+    <table class= "table table-bordered table-light">
+      <thead class="thead-light">
+        <tr>
+          <th>画像</th>
+          <th>タイトル</th>
+          <th>出演者</th>
+          <th>制作</th>
+          <th>ジャンル</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @films.each do |film| %>
+          <tr>
+            <td><%= attachment_image_tag film, :image, fallback: "no_images.png", size: '60x90' %></td>
+            <td><%= film.title %></td>
+            <td><%= render 'admin/films/performer_tag', performer_tag_list: film.performer_list %></td>
+            <td><%= render 'admin/films/staff_tag', staff_tag_list: film.staff_list %></td>
+            <td><%= render 'admin/films/genre_tag', genre_tag_list: film.genre_list %></td>
+            <td><%= link_to '詳細', admin_film_path(film), class:"btn btn-light btn-sm" %></td>
+            <td><%= link_to '編集', edit_admin_film_path(film), class:"btn btn-secondary btn-sm" %></td>
+            <td><%= link_to '削除', admin_film_path(film), method: :delete, class:"btn btn-danger btn-sm", data: { confirm: '削除しますか？' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

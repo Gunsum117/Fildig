@@ -1,12 +1,11 @@
-Admin
-<h1>Films#edit</h1>
+<h1>映画編集</h1>
 
-<%= form_with model: @film,, local: true, url: admin_film_path(@film) do |f| %>
-<%#= form_for @film, url: admin_film_path(@film) do |f| %>
+<%= form_with model: @film, local: true, url: admin_film_path(@film) do |f| %>
 
   	<div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
+	</div>
 
     <div>
     <%= f.label :image %>
