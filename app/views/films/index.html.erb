@@ -1,6 +1,13 @@
-<div class="row">
+<div class="slick">
+	<% @films.each do |film| %>
+		<div><%= attachment_image_tag film, :image, fallback: "no_images.png", size: '225x300' %></div>
+	<% end %>
+</div>
 
-	<div class="col-10">
+<div class="row">
+	<div class="col">
+	</div>
+	<div class="col-8">
 		<div class="card-columns">
 			<% @films.each do |film| %>
 				<!-- 平均スコアの算出 -->
@@ -110,7 +117,8 @@
 			<% end %>
 		</div>
 	</div>
-
+	<div class="col">
+	</div>
 </div>
 
 
