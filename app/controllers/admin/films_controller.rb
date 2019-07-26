@@ -18,6 +18,9 @@ class Admin::FilmsController < ApplicationController
 
   def index
     @films = Film.all
+    if params[:tag_name]
+      @films = @films.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def search
