@@ -139,7 +139,7 @@
 						<%= link_to review.user.name, user_path(review.user_id) %>
 					</p>
 					<h5 class="card-title"><%= review.title %></h5>
-					<div id="star-rate-<%= review.id %>">評価：<%= review.star %>点</div>
+					<div id="star-rate-<%= review.id %>">評価：<%= review.star %></div>
 						<script>
 						  $('#star-rate-<%= review.id %>').raty({
 						    size: 36,
