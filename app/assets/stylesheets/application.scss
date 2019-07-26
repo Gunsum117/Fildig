@@ -47,6 +47,14 @@ body{
 /*    background-color: #ffe9a9;*/
 }
 
+.card:hover {
+	text-decoration: none;
+}
+
+.card-body:hover {
+	text-decoration: none;
+}
+
 .card_fadecolor{
 	background-color: #e2dec5;
 }

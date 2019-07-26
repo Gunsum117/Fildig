@@ -16,7 +16,7 @@
   <tbody>
     <% @films.each do |film| %>
       <tr>
-      	<td><%= attachment_image_tag film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '55x90' %></td>
+      	<td><%= attachment_image_tag film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '60x90' %></td>
         <td><%= film.title %></td>
         <td><%= render 'admin/films/performer_tag', performer_tag_list: film.performer_list %></td>
         <td><%= render 'admin/films/staff_tag', staff_tag_list: film.staff_list %></td>
