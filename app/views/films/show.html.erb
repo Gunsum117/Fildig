@@ -156,10 +156,10 @@
 					</div>
 					<% if review.user == current_user %>
 						<%= link_to '編集', edit_film_review_path(review.film_id,review), class: "btn btn-light border border-seconday"%>
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
 	  						削除
 						</button>
-						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
 						    <div class="modal-content">
 						      <div class="modal-header">

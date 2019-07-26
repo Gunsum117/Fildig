@@ -20,6 +20,11 @@ class Admin::FilmsController < ApplicationController
     @films = Film.all
   end
 
+  def search
+    @films = Film.search(params[:search])
+    render :search
+  end
+
   def show
     @film = Film.find(params[:id])
   end
