@@ -10,6 +10,14 @@ class Film < ApplicationRecord
 	has_many :dones, 	dependent: :destroy
 	has_many :mybests, 	dependent: :destroy
 
+	def self.search(search)
+		if search.present?
+			Film.where(['title LIKE? OR release LIKE? OR language LIKE?', "%#{search}%","%#{search}%","%#{search}%"])
+		else
+			Film.all
+		end
+	end
+
 	def reviewed_by?(user)
 	    reviewes.where(user_id: user.id).exists?
 	end

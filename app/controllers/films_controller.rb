@@ -9,6 +9,11 @@ class FilmsController < ApplicationController
     end
   end
 
+  def search
+    @films = Film.search(params[:search])
+    render :search
+  end
+
   def show
     @film = Film.find(params[:id])
   end
