@@ -1,10 +1,12 @@
 class FilmsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:index, :show]
-
   def index
     @films = Film.all
-    @users = current_user.followings.order("created_at DESC")
+    if user_signed_in?
+      @users = current_user.limit(5).followings.order("created_at DESC")
+    else
+      @users = User.all.limit(5).order("created_at ASC")
+    end
     if params[:tag_name]
       @films = @films.tagged_with("#{params[:tag_name]}")
     end

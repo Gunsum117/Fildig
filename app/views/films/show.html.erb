@@ -8,52 +8,73 @@
 		<div class="card-body text-center">
 			<div class="btn-group">
 				<!-- 観たい -->
-				<% if @film.wished_by?(current_user) %>
-				    <%= link_to film_wish_path(@film), method: :delete do %>
-				      <button type="button" class="btn btn-xl btn-warning">
-				      	観たい!<br>
-				      	<span class="badge badge-dark"><%= @film.wishes.count %></span>
-				      </button>
-				    <% end %>
+				<% if user_signed_in? %>
+					<% if @film.wished_by?(current_user) %>
+					    <%= link_to film_wish_path(@film), method: :delete do %>
+					      <button type="button" class="btn btn-xl btn-warning">
+					      	観たい!<br>
+					      	<span class="badge badge-dark"><%= @film.wishes.count %></span>
+					      </button>
+					    <% end %>
+					<% else %>
+					    <%= link_to film_wishes_path(@film), method: :post do %>
+					      <button type="button" class="btn btn-xl btn-outline-warning">
+					      	観たい!<br>
+					      	<span class="badge badge-dark"><%= @film.wishes.count %></span>
+					      </button>
+					    <% end %>
+					<% end %>
+					<!-- 観た -->
+					<% if @film.doned_by?(current_user) %>
+					    <%= link_to film_done_path(@film), method: :delete do %>
+					      <button type="button" class="btn btn-xl btn-warning">
+					      	 観た! <br>
+					      	<span class="badge badge-dark"><%= @film.dones.count %></span>
+					      </button>
+					    <% end %>
+					<% else %>
+					    <%= link_to film_dones_path(@film), method: :post do %>
+					      <button type="button" class="btn btn-xl btn-outline-warning">
+					      	 観た! <br>
+					      	<span class="badge badge-dark"><%= @film.dones.count %></span>
+					      </button>
+					    <% end %>
+					<% end %>
+					<!-- マイベスト -->
+					<% if @film.mybested_by?(current_user) %>
+					    <%= link_to film_mybest_path(@film), method: :delete do %>
+					      <button type="button" class="btn btn-xl btn-warning">
+					      	MyBest!<br>
+					      	<span class="badge badge-dark"><%= @film.mybests.count %></span>
+					      </button>
+					    <% end %>
+					<% else %>
+					    <%= link_to film_mybests_path(@film), method: :post do %>
+					      <button type="button" class="btn btn-xl btn-outline-warning">
+					      	MyBest!<br>
+					      	<span class="badge badge-dark"><%= @film.mybests.count %></span>
+					      </button>
+					    <% end %>
+					<% end %>
 				<% else %>
-				    <%= link_to film_wishes_path(@film), method: :post do %>
-				      <button type="button" class="btn btn-xl btn-outline-warning">
-				      	観たい!<br>
-				      	<span class="badge badge-dark"><%= @film.wishes.count %></span>
-				      </button>
-				    <% end %>
-				<% end %>
-				<!-- 観た -->
-				<% if @film.doned_by?(current_user) %>
-				    <%= link_to film_done_path(@film), method: :delete do %>
-				      <button type="button" class="btn btn-xl btn-warning">
-				      	 観た! <br>
-				      	<span class="badge badge-dark"><%= @film.dones.count %></span>
-				      </button>
-				    <% end %>
-				<% else %>
-				    <%= link_to film_dones_path(@film), method: :post do %>
-				      <button type="button" class="btn btn-xl btn-outline-warning">
-				      	 観た! <br>
-				      	<span class="badge badge-dark"><%= @film.dones.count %></span>
-				      </button>
-				    <% end %>
-				<% end %>
-				<!-- マイベスト -->
-				<% if @film.mybested_by?(current_user) %>
-				    <%= link_to film_mybest_path(@film), method: :delete do %>
-				      <button type="button" class="btn btn-xl btn-warning">
-				      	MyBest!<br>
-				      	<span class="badge badge-dark"><%= @film.mybests.count %></span>
-				      </button>
-				    <% end %>
-				<% else %>
-				    <%= link_to film_mybests_path(@film), method: :post do %>
-				      <button type="button" class="btn btn-xl btn-outline-warning">
-				      	MyBest!<br>
-				      	<span class="badge badge-dark"><%= @film.mybests.count %></span>
-				      </button>
-				    <% end %>
+					<%= link_to film_wishes_path(@film), method: :post do %>
+					    <button type="button" class="btn btn-xl btn-outline-warning">
+					    	観たい!<br>
+					      	<span class="badge badge-dark"><%= @film.wishes.count %></span>
+					    </button>
+					<% end %>
+					<%= link_to film_dones_path(@film), method: :post do %>
+					    <button type="button" class="btn btn-xl btn-outline-warning">
+					      	観た! <br>
+					      	<span class="badge badge-dark"><%= @film.dones.count %></span>
+					    </button>
+					<% end %>
+					<%= link_to film_mybests_path(@film), method: :post do %>
+						<button type="button" class="btn btn-xl btn-outline-warning">
+							MyBest!<br>
+							<span class="badge badge-dark"><%= @film.mybests.count %></span>
+						</button>
+					<% end %>
 				<% end %>
 			</div>
 		</div>
