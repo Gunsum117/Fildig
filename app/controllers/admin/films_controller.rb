@@ -17,7 +17,7 @@ class Admin::FilmsController < ApplicationController
   end
 
   def index
-    @films = Film.all
+    @films = Film.all.order("created_at DESC")
     if params[:tag_name]
       @films = @films.tagged_with("#{params[:tag_name]}")
     end

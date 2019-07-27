@@ -1,6 +1,9 @@
 <div class="slick">
 	<% @films.each do |film| %>
-		<div><%= attachment_image_tag film, :image, fallback: "no_images.png", size: '225x300' %></div>
+		<div><%= link_to film_path(film) do %>
+				<%= attachment_image_tag film, :image, fallback: "no_images.png", size: '225x300' %>
+			 <% end %>
+		</div>
 	<% end %>
 </div>
 

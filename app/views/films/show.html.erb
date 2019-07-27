@@ -1,6 +1,8 @@
 <br>
 <div class="row">
-	<div class="col-4">
+	<div class="col">
+	</div>
+	<div class="col-3">
 		<div class="card-body text-center"><%= attachment_image_tag @film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '300x450' %>
 		</div>
 		<div class="card-body text-center">
@@ -59,7 +61,7 @@
 			<%= link_to "レビューを投稿する",new_film_review_path(@film), class:"btn btn-secondary btn-block btn-lg" %>
 		</div>
 	</div>
-	<div class="col-8">
+	<div class="col-7">
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title"><%= @film.title %></h4>
@@ -102,6 +104,8 @@
 	        	</ul>
 			</div>
 		</div>
+	</div>
+	<div class="col">
 	</div>
 </div>
 
