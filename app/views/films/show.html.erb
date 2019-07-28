@@ -140,6 +140,13 @@
 					<div class="card-body">
 						<p class="card-text"><%= simple_format(review.body) %></p>
 					</div>
+					<div class="card-text">
+						<% if review.good_reviewed_by?(current_user) %>
+							<%= link_to"いいねを消す", film_review_good_review_path(review.film,review,current_user), method: :delete %>
+						<% else %>
+							<%= link_to"いいねする", film_review_good_reviews_path(review.film,review), method: :post %>
+						<% end %>
+					</div>
 					<% if review.user == current_user %>
 						<%= link_to '編集', edit_film_review_path(review.film_id,review), class: "btn btn-light border border-seconday"%>
 						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
