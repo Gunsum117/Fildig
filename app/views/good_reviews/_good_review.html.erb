@@ -1,0 +1,7 @@
+<% if review.good_reviewed_by?(current_user) %>
+  <%= link_to"いいねを消す", film_review_good_review_path(review.film,review,current_user), method: :delete, remote: true %>
+  <%= review.good_reviews.count %>
+<% else %>
+  <%= link_to"いいねする", film_review_good_reviews_path(review.film,review), method: :post, remote: true %>
+  <%= review.good_reviews.count %>
+<% end %>
