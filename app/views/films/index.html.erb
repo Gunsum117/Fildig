@@ -70,52 +70,39 @@
 					    </p>
 					</div>
 				</div>
-				<script>
-					$(function(){
-					    $('.card').mouseover(function(){
-					        $(this).addClass('card_fadecolor');
-					    });
-					    $('.card').mouseout(function(){
-					        $(this).removeClass('card_fadecolor');
-					    });
-					});
-				</script>
 			<% end %>
 		</div>
 	</div>
 	<div class="col-2">
-		<div class="films-timeline-box">
+ 		<div class="films-timeline-box">
 			<div class="card-header">
-				最新レビュー
+				タイムライン
 			</div>
-			<% @users.each do |user| %>
+			<% @reviews.each do |review| %>
 				<div class="card-body">
-					<% @reviews = Review.where(user_id: user.id).limit(1).order("created_at DESC") %>
-					<% @reviews.each do |review| %>
-						<p><%= attachment_image_tag review.film, :image, fallback: "no_images.png", size: '60x90' %></p>
-						<div>
-							<%= link_to review.film.title, film_path(review.film), class:"films_timeline_filmtitle" %>
-						</div>
-						<p class="text-center"><%= review.star.to_f %><i id="star-rate-<%= review.id %>"></i></p>
-						<p class="films_timeline_username">
-							<%= attachment_image_tag review.user, :image, class:"profile-image", fallback: "no_image_profile.jpg", size: '20x20' %>
-							<%= link_to review.user.name, user_path(review.user_id) %>
-						</p>
-						<p class="films_timeline_title"><%= review.title %></p>
-						<p class="films_timeline_body"><%= review.body %></p>
-						<p class="films_timeline_body"><%= review.created_at.strftime("%Y/%m/%d") %></p>
-						<script>
-						  $('#star-rate-<%= review.id %>').raty({
-						    size: 36,
-						    starOff:  '<%= asset_path('star-off.png') %>',
-						    starOn : '<%= asset_path('star-on.png') %>',
-						    starHalf: '<%= asset_path('star-half.png') %>',
-						    half: true,
-						    readOnly: true,
-						    score: <%= review.star %>,
-						  });
-						</script>
-					<% end %>
+					<p><%= attachment_image_tag review.film, :image, fallback: "no_images.png", size: '60x90' %></p>
+					<div>
+						<%= link_to review.film.title, film_path(review.film), class:"films_timeline_filmtitle" %>
+					</div>
+					<p class="text-center"><%= review.star.to_f %><i id="star-rate-<%= review.id %>"></i></p>
+					<p class="films_timeline_username">
+						<%= attachment_image_tag review.user, :image, class:"profile-image", fallback: "no_image_profile.jpg", size: '20x20' %>
+						<%= link_to review.user.name, user_path(review.user_id) %>
+					</p>
+					<p class="films_timeline_title"><%= review.title %></p>
+					<p class="films_timeline_body"><%= review.body.truncate(55) %></p>
+					<p class="films_timeline_body"><%= review.created_at.strftime("%Y/%m/%d") %></p>
+					<script>
+					  $('#star-rate-<%= review.id %>').raty({
+					    size: 36,
+					    starOff:  '<%= asset_path('star-off.png') %>',
+					    starOn : '<%= asset_path('star-on.png') %>',
+					    starHalf: '<%= asset_path('star-half.png') %>',
+					    half: true,
+					    readOnly: true,
+					    score: <%= review.star %>,
+					  });
+					</script>
 				</div>
 			<% end %>
 		</div>
