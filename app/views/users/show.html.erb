@@ -53,29 +53,20 @@
 		    <a class="nav-item nav-link active text-reset border border-white" id="nav-wish-tab" data-toggle="tab" href="#nav-wish" role="tab" aria-controls="nav-wish" aria-selected="true">観たい!</a>
 		    <a class="nav-item nav-link text-reset border border-white" id="nav-done-tab" data-toggle="tab" href="#nav-done" role="tab" aria-controls="nav-done" aria-selected="false">観た!</a>
 		    <a class="nav-item nav-link text-reset border border-white" id="nav-mybest-tab" data-toggle="tab" href="#nav-mybest" role="tab" aria-controls="nav-mybest" aria-selected="false">Mybest!</a>
+		    <a class="nav-item nav-link text-reset border border-white" id="nav-review-tab" data-toggle="tab" href="#nav-review" role="tab" aria-controls="nav-review" aria-selected="false">レビュー</a>
 		  </div>
 		</nav>
 		<div class="tab-content" id="nav-tabContent">
-		  <div class="tab-pane fade show active" id="nav-wish" role="tabpanel" aria-labelledby="nav-home-tab">
+		  <div class="tab-pane fade show active" id="nav-wish" role="tabpanel" aria-labelledby="nav-wish-tab">
 		  	<div class="card-columns">
 				<% @wishes.each do |wish| %>
 					<a href="<%= film_path(wish.film_id) %>" class="card text-reset card-hover" style="max-width: 18rem;">
 						<div class="card-body">
-						  	<p class="card-text text-center"><%= attachment_image_tag wish.film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '100x150' %></p>
+						  	<p class="card-text text-center"><%= attachment_image_tag wish.film, :image, fallback:"no_images.png", size:'100x150' %></p>
 						    <div ><%= wish.film.title %></div>
 						    <p class="card-text"><%= wish.film.release %>年</p>
 						</div>
 					</a>
-					<script>
-						$(function(){
-						    $('.card').mouseover(function(){
-						        $(this).addClass('card_fadecolor');
-						    });
-						    $('.card').mouseout(function(){
-						        $(this).removeClass('card_fadecolor');
-						    });
-						});
-					</script>
 				<% end %>
 			</div>
 		  </div>
@@ -84,21 +75,11 @@
 				<% @dones.each do |done| %>
 					<a href="<%= film_path(done.film_id) %>" class="card text-reset card-hover" style="max-width: 18rem;">
 						<div class="card-body">
-						  	<p class="card-text text-center"><%= attachment_image_tag done.film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '100x150' %></p>
+						  	<p class="card-text text-center"><%= attachment_image_tag done.film, :image, fallback:"no_images.png", size:'100x150' %></p>
 						    <div ><%= done.film.title %></div>
 						    <p class="card-text"><%= done.film.release %>年</p>
 						</div>
 					</a>
-					<script>
-						$(function(){
-						    $('.card').mouseover(function(){
-						        $(this).addClass('card_fadecolor');
-						    });
-						    $('.card').mouseout(function(){
-						        $(this).removeClass('card_fadecolor');
-						    });
-						});
-					</script>
 				<% end %>
 			</div>
 		  </div>
@@ -107,27 +88,58 @@
 				<% @mybests.each do |mybest| %>
 					<a href="<%= film_path(mybest.film_id) %>" class="card text-reset card-hover" style="max-width: 18rem;">
 						<div class="card-body">
-						  	<p class="card-text text-center"><%= attachment_image_tag mybest.film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '100x150' %></p>
+						  	<p class="card-text text-center"><%= attachment_image_tag mybest.film, :image, fallback:"no_images.png", size:'100x150' %></p>
 						    <div ><%= mybest.film.title %></div>
 						    <p class="card-text"><%= mybest.film.release %>年</p>
 						</div>
 					</a>
-					<script>
-						$(function(){
-						    $('.card').mouseover(function(){
-						        $(this).addClass('card_fadecolor');
-						    });
-						    $('.card').mouseout(function(){
-						        $(this).removeClass('card_fadecolor');
-						    });
-						});
-					</script>
 				<% end %>
 			</div>
 		  </div>
+		  <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab">
+		  	<% @user.reviews.each do |review| %>
+			  	<div class="mypage_review_box">
+				  <div class="row no-gutters">
+				    <div class="col-2">
+				      <div class="card-body text-center">
+				      	<%= attachment_image_tag review.film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '100x150' %>
+				      </div>
+				    </div>
+				    <div class="col-10">
+				      <div class="card-body">
+				      	<p class="card-text"><%= review.film.title %></p>
+				        <h5 class="card-title"><%= review.title %></h5>
+				        <p class="card-text"><%= review.star.to_f %><i id="star-rate-<%= review.id %>"></i></p>
+				        <p class="card-body"><%= review.body.truncate(175) %><%= link_to "全部読む", film_review_path(review.film,review)%></p>
+				        <p class="card-text"><small class="text-muted"><%= review.created_at.strftime("%Y/%m/%d") %></small></p>
+				      </div>
+				      <script>
+					  $('#star-rate-<%= review.id %>').raty({
+					    size: 36,
+					    starOff:  '<%= asset_path('star-off.png') %>',
+					    starOn : '<%= asset_path('star-on.png') %>',
+					    starHalf: '<%= asset_path('star-half.png') %>',
+					    half: true,
+					    readOnly: true,
+					    score: <%= review.star %>,
+					  });
+					</script>
+				   </div>
+				  </div>
+				</div>
+			<% end %>
+		  </div>
 		</div>
 	</div>
-
-
-
 </div>
+
+<script>
+	$(function(){
+	    $('.card').mouseover(function(){
+	        $(this).addClass('card_fadecolor');
+	    });
+	    $('.card').mouseout(function(){
+	        $(this).removeClass('card_fadecolor');
+	    });
+	});
+</script>
