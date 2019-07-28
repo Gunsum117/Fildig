@@ -1,6 +1,8 @@
 <br>
 
 <div class="row">
+	<div class="col-1">
+	</div>
 	<div class="col-2">
 		<% if current_user == @user %>
 			<h2>マイページ</h2>
@@ -8,11 +10,11 @@
 		<div class="text-center">
 			<%= attachment_image_tag @user, :image, class:"profile-image", fallback: "no_image_profile.jpg", size: '150x150' %>
 		</div>
-		<div class="card-text">
+		<div class="card-body text-center">
 			<p class="text-center"><%= @user.name %>さん</p>
-			<div class="btn-group  btn-block">
+			<div class="btn-group">
 				<%=link_to follows_user_path(@user.id) do %>
-					<button type="button" class="btn btn-light btn-sm border">
+					<button type="button" class="btn btn-light btn-sm border text-center">
 						フォロー<br>
 						<span class="badge badge-primary"><%= @user.active_relationships.count %></span>
 					</button>
@@ -45,8 +47,7 @@
 	    <% end %>
 	</div>
 
-
-	<div class="col-10">
+	<div class="col-9">
 		<nav>
 		  <div class="nav nav-tabs" id="nav-tab" role="tablist">
 		    <a class="nav-item nav-link active text-reset border border-white" id="nav-wish-tab" data-toggle="tab" href="#nav-wish" role="tab" aria-controls="nav-wish" aria-selected="true">観たい!</a>

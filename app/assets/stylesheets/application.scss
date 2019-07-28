@@ -17,6 +17,8 @@
  */
 
 @import "bootstrap";
+@import "slick-theme";
+@import "slick";
 
 * {
  	margin: 0;
@@ -35,7 +37,7 @@ body{
 
 .card-columns {
   @include media-breakpoint-only(xl) {
-    column-count: 5;
+    column-count: 4;
   }
 }
 
