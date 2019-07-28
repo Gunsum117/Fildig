@@ -1,0 +1,15 @@
+<% if film.mybested_by?(current_user) %>
+    <%= link_to film_mybest_path(film,current_user), method: :delete, remote: true do %>
+      <button type="button" class="btn btn-xl btn-warning">
+        MyBest!<br>
+        <span class="badge badge-dark"><%= film.mybests.count %></span>
+      </button>
+    <% end %>
+<% else %>
+    <%= link_to film_mybests_path(film), method: :post, remote: true do %>
+      <button type="button" class="btn btn-xl btn-outline-warning">
+        MyBest!<br>
+        <span class="badge badge-dark"><%= film.mybests.count %></span>
+      </button>
+    <% end %>
+<% end %>

@@ -3,7 +3,7 @@ class FilmsController < ApplicationController
   def index
     @films = Film.all
     if user_signed_in?
-      @users = current_user.limit(5).followings.order("created_at DESC")
+      @users = current_user.followings.limit(5).order("created_at DESC")
     else
       @users = User.all.limit(5).order("created_at ASC")
     end

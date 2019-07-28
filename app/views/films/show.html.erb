@@ -3,59 +3,20 @@
 	<div class="col">
 	</div>
 	<div class="col-3">
-		<div class="card-body text-center"><%= attachment_image_tag @film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '300x450' %>
+		<div class="card-body text-center"><%= attachment_image_tag @film, :image, fallback: "no_images.png", size: '300x450' %>
 		</div>
 		<div class="card-body text-center">
 			<div class="btn-group">
-				<!-- 観たい -->
 				<% if user_signed_in? %>
-					<% if @film.wished_by?(current_user) %>
-					    <%= link_to film_wish_path(@film), method: :delete do %>
-					      <button type="button" class="btn btn-xl btn-warning">
-					      	観たい!<br>
-					      	<span class="badge badge-dark"><%= @film.wishes.count %></span>
-					      </button>
-					    <% end %>
-					<% else %>
-					    <%= link_to film_wishes_path(@film), method: :post do %>
-					      <button type="button" class="btn btn-xl btn-outline-warning">
-					      	観たい!<br>
-					      	<span class="badge badge-dark"><%= @film.wishes.count %></span>
-					      </button>
-					    <% end %>
-					<% end %>
-					<!-- 観た -->
-					<% if @film.doned_by?(current_user) %>
-					    <%= link_to film_done_path(@film), method: :delete do %>
-					      <button type="button" class="btn btn-xl btn-warning">
-					      	 観た! <br>
-					      	<span class="badge badge-dark"><%= @film.dones.count %></span>
-					      </button>
-					    <% end %>
-					<% else %>
-					    <%= link_to film_dones_path(@film), method: :post do %>
-					      <button type="button" class="btn btn-xl btn-outline-warning">
-					      	 観た! <br>
-					      	<span class="badge badge-dark"><%= @film.dones.count %></span>
-					      </button>
-					    <% end %>
-					<% end %>
-					<!-- マイベスト -->
-					<% if @film.mybested_by?(current_user) %>
-					    <%= link_to film_mybest_path(@film), method: :delete do %>
-					      <button type="button" class="btn btn-xl btn-warning">
-					      	MyBest!<br>
-					      	<span class="badge badge-dark"><%= @film.mybests.count %></span>
-					      </button>
-					    <% end %>
-					<% else %>
-					    <%= link_to film_mybests_path(@film), method: :post do %>
-					      <button type="button" class="btn btn-xl btn-outline-warning">
-					      	MyBest!<br>
-					      	<span class="badge badge-dark"><%= @film.mybests.count %></span>
-					      </button>
-					    <% end %>
-					<% end %>
+					<div id="wish_button">
+						<%= render 'wishes/wish', film: @film %>
+          			</div>
+					<div id="done_button">
+						<%= render 'dones/done', film: @film %>
+          			</div>
+					<div id="mybest_button">
+						<%= render 'mybests/mybest', film: @film %>
+          			</div>
 				<% else %>
 					<%= link_to film_wishes_path(@film), method: :post do %>
 					    <button type="button" class="btn btn-xl btn-outline-warning">
@@ -178,6 +139,9 @@
 						</script>
 					<div class="card-body">
 						<p class="card-text"><%= simple_format(review.body) %></p>
+					</div>
+					<div id="good_review_button_<%= review.id %>">
+						<%= render 'good_reviews/good_review', review: review %>
 					</div>
 					<% if review.user == current_user %>
 						<%= link_to '編集', edit_film_review_path(review.film_id,review), class: "btn btn-light border border-seconday"%>

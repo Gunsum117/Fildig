@@ -1,0 +1,15 @@
+<% if film.wished_by?(current_user) %>
+    <%= link_to film_wish_path(film,current_user), method: :delete, remote: true  do %>
+    	<button type="button" class="btn btn-xl btn-warning">
+      		観たい!<br>
+      		<span class="badge badge-dark"><%= film.wishes.count %></span>
+      	</button>
+    <% end %>
+<% else %>
+    <%= link_to film_wishes_path(film), method: :post, remote: true  do %>
+      	<button type="button" class="btn btn-xl btn-outline-warning">
+      		観たい!<br>
+      		<span class="badge badge-dark"><%= film.wishes.count %></span>
+      	</button>
+    <% end %>
+<% end %>
