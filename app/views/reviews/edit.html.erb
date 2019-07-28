@@ -3,7 +3,7 @@
 	</div>
 	<div class="col-3">
 	  <div class="card">
-	      	<p class="card-body text-center"><%= attachment_image_tag @review.film, :image, class: "item-index-jacket-image", fallback: "no_images.png", size: '200x300' %></p>
+	      	<p class="card-body text-center"><%= attachment_image_tag @review.film, :image, fallback: "no_images.png", size: '200x300' %></p>
 	        <h5 class="card-text text-center"><%= @review.film.title %></h5>
 	        <p class="card-text">
 	        	<% @review.film.performer_list.each do |tag| %>

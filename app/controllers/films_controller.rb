@@ -3,10 +3,13 @@ class FilmsController < ApplicationController
   def index
     @films = Film.all
     if user_signed_in?
-      @users = current_user.followings.limit(5).order("created_at DESC")
+      reviews_all = Review.all
+      @users = current_user.followings
+      @reviews = reviews_all.where(user_id: @users).limit(5).order("created_at DESC")
     else
-      @users = User.all.limit(5).order("created_at ASC")
+      @reviews = Review.all.limit(5).order("created_at ASC")
     end
+    # タグ検索
     if params[:tag_name]
       @films = @films.tagged_with("#{params[:tag_name]}")
     end

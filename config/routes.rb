@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   	resources :wishes,			only:[:create, :destroy]
   	resources :dones,			only:[:create, :destroy]
   	resources :mybests,			only:[:create, :destroy]
-  	resources :reviews,			only:[:new, :create, :edit, :update, :destroy] do
+  	resources :reviews,			only:[:new, :create, :show, :edit, :update, :destroy] do
   		resources :good_reviews,	only:[:create, :destroy]
   	end
   end
