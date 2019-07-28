@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
 
-	has_many :good_reviews
+	has_many :good_reviews,	dependent: :destroy
 
 	belongs_to :user
 	belongs_to :film

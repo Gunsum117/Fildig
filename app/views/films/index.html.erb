@@ -21,12 +21,10 @@
 				<% end %>
 				<% star_av = 0 %>
 				<% star_av = starsum.to_f / film.reviews.count %>
-
 				<!-- スコアが無い場合の処理 -->
 				<% if star_av.to_f.nan? %>
 					<% star_av = 0 %>
 				<% end %>
-
 				<div class="card" style="max-width: 18rem;">
 					<a href="<%= film_path(film) %>" class="card-body text-reset">
 					  	<p class="text-center"><%= attachment_image_tag film, :image, fallback: "no_images.png", size: '150x200' %>
@@ -90,7 +88,10 @@
 						<%= link_to review.user.name, user_path(review.user_id) %>
 					</p>
 					<p class="films_timeline_title"><%= review.title %></p>
-					<p class="films_timeline_body"><%= review.body.truncate(55) %></p>
+					<p class="films_timeline_body">
+						<%= review.body.truncate(55) %>
+						<%= link_to "全部読む", film_review_path(review.film,review)%>
+					</p>
 					<p class="films_timeline_body"><%= review.created_at.strftime("%Y/%m/%d") %></p>
 					<script>
 					  $('#star-rate-<%= review.id %>').raty({
@@ -111,6 +112,14 @@
 	</div>
 </div>
 
-
-
-
+<!-- film_indexのみに適用するためここに記載 -->
+<script>
+	$(function(){
+	    $('.card').mouseover(function(){
+	        $(this).addClass('card_fadecolor');
+	    });
+	    $('.card').mouseout(function(){
+	        $(this).removeClass('card_fadecolor');
+	    });
+	});
+</script>
