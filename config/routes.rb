@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   	resources :tags,		only:[:create, :index, :show, :update]
   	resources :reviews,		only:[:edit, :update, :destroy]
   	get "search_films" => "films#search",as: 'search_films'
+  	get "search_users" => "users#search",as: 'search_users'
   end
 
 
@@ -37,6 +38,7 @@ Rails.application.routes.draw do
   	end
   end
   get "search_films" => "films#search",as: 'search_films'
+  get "search_users" => "users#search",as: 'search_users'
 
   resources :tags,			only:[:create, :index, :show, :update]
   resources :contacts,		only:[:new, :create, :destroy]
