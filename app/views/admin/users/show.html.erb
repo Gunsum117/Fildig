@@ -8,7 +8,7 @@
 			</div>
 			<div class="card-body">
 				<div class="card-title text-center">
-					<%= attachment_image_tag @user, :image, fallback:"no_image_profile.jpg", size:"200x200" %>
+					<%= attachment_image_tag @user, :image, fallback:"/images/no_image_profile.jpg", size:"200x200" %>
 				</div>
 				<div class="card-title font-weight-bold">ユーザー名</div>
 				<div class="card-text"><%= @user.name %></div>

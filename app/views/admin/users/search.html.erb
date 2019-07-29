@@ -14,7 +14,7 @@
 				<table class="table">
 					<% @users.each do |user| %>
 						<tr>
-							<td><%= attachment_image_tag user, :image, class:"profile-image", fallback: "no_image_profile.jpg", size: '40x40' %>
+							<td><%= attachment_image_tag user, :image, class:"profile-image", fallback: "/images/no_image_profile.jpg", size: '40x40' %>
 							</td>
 							<td><%= link_to user.name, admin_user_path(user) %></td>
 							<td><span class="badge badge-warning">観たい!<br>
