@@ -17,8 +17,14 @@
  */
 
 @import "bootstrap";
+@import "custom";
 @import "slick-theme";
 @import "slick";
+
+@font-face{
+	font-family: "gokuboso";
+   	src: font-url('NagomiGokubosoGothic-ExtraLight.otf') format('truetype');
+ }
 
 * {
  	margin: 0;
@@ -30,9 +36,20 @@ body{
 	background-color: #e3e0d1;
 }
 
+.site-logo{
+	font-family: "gokuboso";
+	font-weight:bold;
+	font-size: 30pt;
+	color: #ffffff;
+}
+
+.site-logo:hover {
+	text-decoration: none;
+}
+
 .navbar{
 	background-color: #e3d595;
-	color: white;
+	color: #ffffff;
 }
 
 .card-columns {
@@ -46,7 +63,6 @@ body{
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all  0.3s ease;
-/*    background-color: #ffe9a9;*/
 }
 
 .card:hover {

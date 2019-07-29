@@ -28,7 +28,7 @@
     <nav class="navbar navbar-expand" >
       <div class="container">
         <ui class="navbar-brand">
-          <%= link_to "Fildig", root_path, class: "nav-link text-white" %>
+          <%= link_to "Fildig", root_path, class: "site-logo" %>
         </ui>
 
         <ul class="navbar-nav ml-auto">
@@ -59,6 +59,9 @@
           <% elsif user_signed_in? %>
             <%= render "layouts/search_form" %>
             <li class="nav-link text-white">
+            </li>
+            <li class="nav-item">
+              <%= attachment_image_tag current_user, :image, class:"profile-image", fallback: "no_image_profile.jpg", size: '40x40' %>
             </li>
             <li class="nav-item">
               <%= link_to "マイページ", user_path(current_user), class: "nav-link text-white" %>
@@ -92,7 +95,13 @@
 
     <div class="container-fluid">
       <% flash.each do |type,msg| %>
-        <div class="alert alert-<%= type %>" role="alert"><%= msg %></div>
+        <div class="alert alert-<%= type %>  alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">close</span>
+          </button>
+          <%= msg %>
+        </div>
       <% end %>
       <%= yield %>
     </div>

@@ -10,6 +10,12 @@ class Film < ApplicationRecord
 	has_many :dones, 	dependent: :destroy
 	has_many :mybests, 	dependent: :destroy
 
+	validates :title,   	presence: true
+	validates :story,		presence: true
+	validates :release,		presence: true
+	validates :language,	presence: true
+	validates :time,		presence: true
+
 	def self.search(search)
 		if search.present?
 			Film.where(['title LIKE? OR release LIKE? OR language LIKE?', "%#{search}%","%#{search}%","%#{search}%"])

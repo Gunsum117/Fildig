@@ -16,6 +16,10 @@
 		            	<label>画像</label><br>
 		            	<%= f.attachment_field :image %>
 		          	</div>
+		          	<div class="form-group">
+		            	<label>あらすじ</label><br>
+		            	<%= f.text_area :story, class:"form-control", placeholder:"あらすじ" %>
+		          	</div>
 				    <div class="film-tags-field">
 						<label>出演者タグ</label>
 				    	<%= f.text_field :performer_list, value: @film.performer_list.join(','), "data-role" => "tagsinput" %>
