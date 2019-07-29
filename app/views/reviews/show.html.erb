@@ -5,7 +5,7 @@
 		<div class="card">
 	      	<p class="card-body text-center">
 	      		<%= link_to film_path(@review.film) do %>
-	      			<%= attachment_image_tag @review.film, :image, fallback:"no_images.png", size:"200x300" %>
+	      			<%= attachment_image_tag @review.film, :image, fallback:"/images/no_images.png", size:"200x300" %>
 	      		<% end %>
 	      	</p>
 	        <h5 class="card-text text-center"><%= @review.film.title %></h5>
@@ -43,7 +43,7 @@
 		<div class="card">
 			<div class="card-body">
 				<p class="card-text">
-					<%= attachment_image_tag @review.user, :image, class:"profile-image", fallback: "no_image_profile.jpg", size: '40x40' %>
+					<%= attachment_image_tag @review.user, :image, class:"profile-image", fallback: "/images/no_image_profile.jpg", size: '40x40' %>
 					<%= link_to @review.user.name, user_path(@review.user_id) %>
 				</p>
 				<h5 class="card-title"><%= @review.title %></h5>
@@ -51,9 +51,9 @@
 					<script>
 					  $('#star-rate-<%= @review.id %>').raty({
 					    size: 36,
-					    starOff:  '<%= asset_path('star-off.png') %>',
-					    starOn : '<%= asset_path('star-on.png') %>',
-					    starHalf: '<%= asset_path('star-half.png') %>',
+					    starOff:  '<%= asset_path('/images/star-off.png') %>',
+					    starOn : '<%= asset_path('/images/star-on.png') %>',
+					    starHalf: '<%= asset_path('/images/star-half.png') %>',
 					    half: true,
 					    readOnly: true,
 					    score: <%= @review.star %>,

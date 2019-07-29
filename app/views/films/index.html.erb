@@ -1,7 +1,7 @@
 <div class="slick">
 	<% @films.each do |film| %>
 		<div><%= link_to film_path(film) do %>
-				<%= attachment_image_tag film, :image, fallback: "no_images.png", size: '225x300' %>
+				<%= attachment_image_tag film, :image, fallback: "/images/no_images.png", size: '225x300' %>
 			 <% end %>
 		</div>
 	<% end %>
@@ -27,15 +27,15 @@
 				<% end %>
 				<div class="card" style="max-width: 18rem;">
 					<a href="<%= film_path(film) %>" class="card-body text-reset">
-					  	<p class="text-center"><%= attachment_image_tag film, :image, fallback: "no_images.png", size: '150x200' %>
+					  	<p class="text-center"><%= attachment_image_tag film, :image, fallback: "/images/no_images.png", size: '150x200' %>
 					  	</p>
 					    <div class="text-center"><%= star_av.to_f %><i id="star-rate-<%= film.id %>"></i></div>
 						<script>
 						  $('#star-rate-<%= film.id %>').raty({
 						    size: 36,
-						    starOff:  '<%= asset_path('star-off.png') %>',
-						    starOn : '<%= asset_path('star-on.png') %>',
-						    starHalf: '<%= asset_path('star-half.png') %>',
+						    starOff:  '<%= asset_path('/images/star-off.png') %>',
+						    starOn : '<%= asset_path('/images/star-on.png') %>',
+						    starHalf: '<%= asset_path('/images/star-half.png') %>',
 						    half: true,
 						    readOnly: true,
 						    score: <%= star_av %>,
@@ -78,13 +78,13 @@
 			</div>
 			<% @reviews.each do |review| %>
 				<div class="card-body">
-					<p><%= attachment_image_tag review.film, :image, fallback: "no_images.png", size: '60x90' %></p>
+					<p><%= attachment_image_tag review.film, :image, fallback: "/images/no_images.png", size: '60x90' %></p>
 					<div>
 						<%= link_to review.film.title, film_path(review.film), class:"films_timeline_filmtitle" %>
 					</div>
 					<p class="text-center"><%= review.star.to_f %><i id="star-rate-<%= review.id %>"></i></p>
 					<p class="films_timeline_username">
-						<%= attachment_image_tag review.user, :image, class:"profile-image", fallback: "no_image_profile.jpg", size: '20x20' %>
+						<%= attachment_image_tag review.user, :image, class:"profile-image", fallback: "/images/no_image_profile.jpg", size: '20x20' %>
 						<%= link_to review.user.name, user_path(review.user_id) %>
 					</p>
 					<p class="films_timeline_title"><%= review.title %></p>
@@ -96,9 +96,9 @@
 					<script>
 					  $('#star-rate-<%= review.id %>').raty({
 					    size: 36,
-					    starOff:  '<%= asset_path('star-off.png') %>',
-					    starOn : '<%= asset_path('star-on.png') %>',
-					    starHalf: '<%= asset_path('star-half.png') %>',
+					    starOff:  '<%= asset_path('/images/star-off.png') %>',
+					    starOn : '<%= asset_path('/images/star-on.png') %>',
+					    starHalf: '<%= asset_path('/images/star-half.png') %>',
 					    half: true,
 					    readOnly: true,
 					    score: <%= review.star %>,

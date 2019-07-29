@@ -3,7 +3,7 @@
 	<div class="col">
 	</div>
 	<div class="col-3">
-		<div class="card-body text-center"><%= attachment_image_tag @film, :image, fallback: "no_images.png", size: '300x450' %>
+		<div class="card-body text-center"><%= attachment_image_tag @film, :image, fallback: "/images/no_images.png", size: '300x450' %>
 		</div>
 <!-- 観たい/観た/マイベスト -->
 		<div class="card-body text-center">
@@ -129,6 +129,7 @@
 	<% star_av = 0 %>
 <% end %>
 
+<!-- レビュー -->
 <br>
 <div class="row">
 	<div class="col">
@@ -143,11 +144,10 @@
 					</div>
 				</div>
 			</div>
-<!-- レビュー -->
 			<% @reviews.each do |review| %>
 				<div class="card-body">
 					<p class="card-text">
-						<%= attachment_image_tag review.user, :image, class:"profile-image", fallback: "no_image_profile.jpg", size: '40x40' %>
+						<%= attachment_image_tag review.user, :image, class:"profile-image", fallback: "/images/no_image_profile.jpg", size: '40x40' %>
 						<%= link_to review.user.name, user_path(review.user_id) %>
 					</p>
 					<h5 class="card-title"><%= review.title %></h5>
@@ -155,9 +155,9 @@
 						<script>
 						  $('#star-rate-<%= review.id %>').raty({
 						    size: 36,
-						    starOff:  '<%= asset_path('star-off.png') %>',
-						    starOn : '<%= asset_path('star-on.png') %>',
-						    starHalf: '<%= asset_path('star-half.png') %>',
+						    starOff:  '<%= asset_path('/images/star-off.png') %>',
+						    starOn : '<%= asset_path('/images/star-on.png') %>',
+						    starHalf: '<%= asset_path('/images/star-half.png') %>',
 						    half: true,
 						    readOnly: true,
 						    score: <%= review.star %>,
@@ -212,9 +212,9 @@
 <script>
   $('#star_av_image').raty({
     size: 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
+    starOff:  '<%= asset_path('/images/star-off.png') %>',
+    starOn : '<%= asset_path('/images/star-on.png') %>',
+    starHalf: '<%= asset_path('/images/star-half.png') %>',
     half: true,
     readOnly: true,
     score: <%= star_av %>,
