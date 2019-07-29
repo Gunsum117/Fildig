@@ -6,31 +6,85 @@
     <%= csp_meta_tag %>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="tagsinput.css" rel="stylesheet" type="text/css">
+<!--     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<!--     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="tagsinput.js"></script>
+    <!-- raty -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
-    <nav class="navbar navbar-expand navbar-dark bg-dark" >
+    <nav class="navbar navbar-expand" >
       <div class="container">
+        <ui class="navbar-brand">
+          <%= link_to "Fildig", root_path, class: "site-logo" %>
+        </ui>
+
         <ul class="navbar-nav ml-auto">
 
           <% if admin_signed_in? %>
             <li class="nav-item">
-              <%= link_to "LOG OUT", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+              <%= link_to "ユーザーリスト", admin_users_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-link text-white">
+              ｜
+            </li>
+            <li class="nav-item">
+              <%= link_to "映画リスト", admin_films_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-link text-white">
+              ｜
+            </li>
+            <li class="nav-item">
+              <%= link_to "映画追加", new_admin_film_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-link text-white">
+              ｜
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-white" %>
             </li>
 
           <% elsif user_signed_in? %>
+            <%= render "layouts/search_form" %>
+            <li class="nav-link text-white">
+            </li>
             <li class="nav-item">
-              <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class: "nav-link" %>
+              <%= attachment_image_tag current_user, :image, class:"profile-image", fallback: "no_image_profile.jpg", size: '40x40' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "マイページ", user_path(current_user), class: "nav-link text-white" %>
+            </li>
+            <li class="nav-link text-white">
+              ｜
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-white" %>
             </li>
 
           <% else %>
-            <li class="nav-item">
-              <%= link_to "LOG IN", new_user_session_path, class: "nav-link" %>
+            <%= render "layouts/search_form" %>
+            <li class="nav-link text-white">
             </li>
             <li class="nav-item">
-              <%= link_to "SIGN UP", new_user_registration_path, class: "nav-link" %>
+              <%= link_to "ログイン", new_user_session_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-link text-white">
+              ｜
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-white" %>
             </li>
 
           <% end %>
@@ -39,13 +93,22 @@
       </div><!-- container -->
     </nav>
 
-    <div class="container">
+    <div class="container-fluid">
+      <% flash.each do |type,msg| %>
+        <div class="alert alert-<%= type %>  alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">close</span>
+          </button>
+          <%= msg %>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
   </body>
 </html>

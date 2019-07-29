@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class Admin::ReviewsController < ApplicationController
 
   before_action :authenticate_admin!, only: [:edit, :update, :destroy]
 

@@ -1,0 +1,5 @@
+<% genre_tag_list.each do |tag| %>
+  <span class="badge badge-info">
+  	<%= link_to tag, admin_films_path(tag_name: tag), class:"text-white"%>
+  </span><br>
+<% end %>

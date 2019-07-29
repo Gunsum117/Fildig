@@ -1,3 +1,27 @@
-Admin
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="row">
+	<div class="col">
+	</div>
+	<div class="col-5">
+		<div class="card">
+			<div class="card-header">
+				ユーザー詳細
+			</div>
+			<div class="card-body">
+				<div class="card-title text-center">
+					<%= attachment_image_tag @user, :image, fallback:"no_image_profile.jpg", size:"200x200" %>
+				</div>
+				<div class="card-title font-weight-bold">ユーザー名</div>
+				<div class="card-text"><%= @user.name %></div>
+				<div class="card-title font-weight-bold">メールアドレス</div>
+				<div class="card-text"><%= @user.email %></div>
+				<div class="card-text text-center">
+					<%= link_to "戻る", admin_users_path, class: "btn btn-light border border-seconday"%>
+					<%= link_to "編集", edit_admin_user_path(@user), class: 'btn btn-secondary'%>
+					<%= link_to '退会', admin_user_path(@user), method: :delete, class:"btn btn-danger", data: { confirm: '退会させますか？' } %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col">
+	</div>
+</div>

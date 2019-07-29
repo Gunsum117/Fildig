@@ -1,3 +1,38 @@
 // Place all the styles related to the films controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.film_index-card-content{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.films-timeline-box{
+	background-color: #ffffff;
+}
+
+.films_timeline_filmtitle{
+	font-size: 10pt;
+	text-decoration: none;
+	color: #000000;
+}
+
+.films_timeline_username{
+	font-size: 10pt;
+}
+
+.films_timeline_title{
+	font-size: 10pt;
+}
+
+.films_timeline_body{
+	font-size: 8pt;
+}
+
+.top_review_box{
+	background-color: #efeacb;
+}
+
+.top_review_header{
+	color: #89815a;
+}

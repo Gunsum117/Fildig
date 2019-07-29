@@ -1,2 +1,64 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<div class="row">
+	<div class="col">
+	</div>
+	<div class="col-3">
+	  <div class="card">
+	      	<p class="card-body text-center"><%= attachment_image_tag @film, :image, fallback: "no_images.png", size: '200x300' %></p>
+	        <h5 class="card-text text-center"><%= @film.title %></h5>
+	        <p class="card-text">
+	        	<% @film.performer_list.each do |tag| %>
+					<span class="badge badge-info"><%= tag %></span>
+				<% end %>
+	        </p>
+	        <p class="card-text">
+	        	<% @film.staff_list.each do |tag| %>
+					<span class="badge badge-info"><%= tag %></span>
+				<% end %>
+	        </p>
+	        <p class="card-text">
+	        	<% @film.genre_list.each do |tag| %>
+					<span class="badge badge-info"><%= tag %></span>
+				<% end %>
+	        </p>
+	  </div>
+	</div>
+	<div class="col-7">
+		<div class="card">
+			<h3 class="card-header">レビューを投稿する
+			</h3>
+			<%= form_with model: @review, local: true, url: film_reviews_path do |f| %>
+				<div class="card-body">
+					<%= f.label :star, "スコア"%>
+					<div class="field" id="star">
+						<%= f.hidden_field :star, id: :review_star %>
+					</div>
+				</div>
+				<div class="card-body">
+					<%= f.label :title, "タイトル", class: 'card-title' %>
+					<%= f.text_field :title , class: 'form-control rounded' %>
+				</div>
+				<div class="card-body">
+					<%= f.label :body, "本文", class: 'card-title' %>
+					<%= f.text_area :body, class: 'form-control rounded', size: "60x10" %>
+				</div>
+				<div class="card-text text-center">
+					<%= link_to "戻る", film_path(@film), class: "btn btn-light border border-seconday"%>
+					<%= f.submit "投稿", class: 'btn btn-primary'%>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="col">
+	</div>
+</div>
+
+<script>
+$('#star').raty({
+  size     : 300,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  starHalf: '<%= asset_path('star-half.png') %>',
+  scoreName: 'review[star]',
+  half: true,
+});
+</script>

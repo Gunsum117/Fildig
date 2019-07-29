@@ -1,3 +1,113 @@
-Admin
-<h1>Films#show</h1>
-<p>Find me in app/views/films/show.html.erb</p>
+<div class="row">
+	<div class="col">
+	</div>
+	<div class="col-3">
+		<div class="card-body text-center"><%= attachment_image_tag @film, :image, fallback: "no_images.png", size: '300x450' %>
+		</div>
+<!-- 観たい/観た/マイベスト -->
+		<div class="card-body text-center">
+			<div class="btn-group">
+				<% if user_signed_in? %>
+					<div id="wish_button">
+						<%= render 'wishes/wish', film: @film %>
+          			</div>
+					<div id="done_button">
+						<%= render 'dones/done', film: @film %>
+          			</div>
+					<div id="mybest_button">
+						<%= render 'mybests/mybest', film: @film %>
+          			</div>
+				<% else %>
+					<%= link_to film_wishes_path(@film), method: :post do %>
+					    <button type="button" class="btn btn-xl btn-outline-warning">
+					    	観たい!<br>
+					      	<span class="badge badge-dark"><%= @film.wishes.count %></span>
+					    </button>
+					<% end %>
+					<%= link_to film_dones_path(@film), method: :post do %>
+					    <button type="button" class="btn btn-xl btn-outline-warning">
+					      	観た! <br>
+					      	<span class="badge badge-dark"><%= @film.dones.count %></span>
+					    </button>
+					<% end %>
+					<%= link_to film_mybests_path(@film), method: :post do %>
+						<button type="button" class="btn btn-xl btn-outline-warning">
+							MyBest!<br>
+							<span class="badge badge-dark"><%= @film.mybests.count %></span>
+						</button>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+<!-- 映画情報 -->
+	<div class="col-7">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title"><%= @film.title %></h4>
+				<p class="card-text">公開年：<%= @film.release %> ／ 言語：<%= @film.language %> ／ 上映時間：<%= @film.time %>分</p>
+				<div class="card">
+					<p class="card-header">あらすじ</p>
+					<div class="card-body">
+						<%= @film.story.truncate(180)%>
+						<span class="btn btn-link" data-toggle="modal" data-target="#deleteModal">
+	  						全部読む
+						</span>
+						<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+						  <div class="modal-dialog" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+						        <%= simple_format(@film.story) %>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+						        	閉じる
+						        </button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- 映画タグ -->
+		<div class="card">
+			<div class="card-body">
+				<ul class="list-group list-group-flush">
+			        <li class="list-group-item">
+			        	<p>出演者</p>
+			        	<% @film.performer_list.each do |tag| %>
+							<span class="badge badge-info">
+								<%= link_to tag, films_path(tag_name: tag), class:"text-white"%>
+							</span>
+						<% end %>
+		        	</li>
+		        	<li class="list-group-item">
+		        		<p>制作</p>
+			        	<% @film.staff_list.each do |tag| %>
+							<span class="badge badge-info">
+								<%= link_to tag, films_path(tag_name: tag), class:"text-white"%>
+							</span>
+						<% end %>
+		        	</li>
+		        	<li class="list-group-item">
+		        		<p>ジャンル</p>
+			        	<% @film.genre_list.each do |tag| %>
+							<span class="badge badge-info">
+								<%= link_to tag, films_path(tag_name: tag), class:"text-white"%>
+							</span>
+						<% end %>
+		        	</li>
+	        	</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col">
+	</div>
+</div>

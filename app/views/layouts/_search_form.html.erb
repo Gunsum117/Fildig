@@ -1,0 +1,6 @@
+<%= form_tag search_films_path, :method => 'get', class:"form-inline" do %>
+  <li class="nav-item">
+    <%= text_field_tag :search, "", class:"form-control rounded-pill", size: "40",placeholder: "映画名/公開年/言語" %>
+    <%= submit_tag "検索", class:"btn btn-light", :title => nil %>
+  </li>
+<% end %>
