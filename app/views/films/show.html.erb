@@ -52,9 +52,31 @@
 				<p class="card-text">公開年：<%= @film.release %> ／ 言語：<%= @film.language %> ／ 上映時間：<%= @film.time %>分</p>
 				<div class="card">
 					<p class="card-header">あらすじ</p>
-					<p class="card-body">
-						card は柔軟で拡張ができるコンテナです。headers や footers のオプション, 多様なコンテンツ, 背景色, 表示オプション が含まれています。Bootstrap3の panels, wells, thumbnails は card に置きかわります。これらのコンポーネントの機能は card のクラスとして利用できます。カードは少ないマークアップとスタイルで構築されていますが, 多くのカスタマイズが可能です。Flexboxで構築されているため, 簡単に配置ができ, 他のコンポーネントと組み合わせ可能です。 デフォルトでは margin の設定がないので, 必要に応じて spacing utilities を使用します。以下は,幅が固定されたカードの例です。カードには固定幅がないので, 親要素の幅に広がります。これは sizing options でカスタマイズ可能です。
-					</p>
+					<div class="card-body">
+						<%= @film.story.truncate(180)%>
+						<span class="btn btn-link" data-toggle="modal" data-target="#deleteModal">
+	  						全部読む
+						</span>
+						<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+						  <div class="modal-dialog" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+						        <%= simple_format(@film.story) %>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+						        	閉じる
+						        </button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -142,7 +164,8 @@
 						  });
 						</script>
 					<div class="card-body">
-						<p class="card-text"><%= simple_format(review.body.truncate(175)) %></p>
+							<%= simple_format(review.body.truncate(100)) %>
+							<%= link_to "全部読む", film_review_path(review.film,review), class:"btn btn-link"%>
 						<p class="card-text"><small class="text-muted"><%= review.created_at.strftime("%Y/%m/%d/%H:%M") %></small></p>
 					</div>
 					<div id="good_review_button_<%= review.id %>">

@@ -60,7 +60,7 @@ class Admin::FilmsController < ApplicationController
 
   private
     def film_params
-        params.require(:film).permit(:title, :image, :based, :release, :time, :language, :performer_list, :staff_list, :genre_list)
+        params.require(:film).permit(:title, :image, :story, :based, :release, :time, :language, :performer_list, :staff_list, :genre_list)
     end
 
 end
