@@ -111,7 +111,7 @@
 				        <h5 class="card-title"><%= review.title %></h5>
 				        <p class="card-text"><%= review.star.to_f %><i id="star-rate-<%= review.id %>"></i></p>
 				        <p class="card-body"><%= review.body.truncate(175) %><%= link_to "全部読む", film_review_path(review.film,review)%></p>
-				        <p class="card-text"><small class="text-muted"><%= review.created_at.strftime("%Y/%m/%d") %></small></p>
+				        <p class="card-text"><small class="text-muted"><%= review.created_at.strftime("%Y/%m/%d/%H:%M") %></small></p>
 				      </div>
 				      <script>
 					  $('#star-rate-<%= review.id %>').raty({

@@ -1,7 +1,7 @@
 class FilmsController < ApplicationController
 
   def index
-    @films = Film.all
+    @films = Film.all.page(params[:page]).per(30)
     if user_signed_in?
       reviews_all = Review.all
       @users = current_user.followings
@@ -22,6 +22,8 @@ class FilmsController < ApplicationController
 
   def show
     @film = Film.find(params[:id])
+    @reviews = Review.where(film_id: @film.id).order("created_at DESC").page(params[:page]).per(1)
+    @top_reviews = Review.top_review
   end
 
   def edit

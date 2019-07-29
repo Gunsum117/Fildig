@@ -1,9 +1,9 @@
 $(function(){
   $('.slick').slick({
+    dots:true,
   	infinite: true,
     autoplay:true,
-    autoplaySpeed: 2000,
-    dots:true,
+    autoplaySpeed: 2800,
     draggable: true,
     slidesToShow: 5,
     centerMode: true,
