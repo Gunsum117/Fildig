@@ -22,7 +22,7 @@ class FilmsController < ApplicationController
 
   def show
     @film = Film.find(params[:id])
-    @reviews = Review.where(film_id: @film.id).order("created_at DESC").page(params[:page]).per(1)
+    @reviews = Review.where(film_id: @film.id).order("created_at DESC").page(params[:page]).per(5)
     @top_reviews = Review.top_review
   end
 
