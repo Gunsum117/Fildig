@@ -140,7 +140,7 @@
 				<div class="row">
 					<div class="col">
 						<h4><%= @film.reviews.count %>件のユーザーレビュー</h4>
-						<h5>平均スコア：<%= star_av.to_f %>  <i id="star_av_image"></i></h5>
+						<h5>平均スコア：<%= star_av.round(2).to_f %>  <i id="star_av_image"></i></h5>
 					</div>
 				</div>
 			</div>
@@ -151,7 +151,7 @@
 						<%= link_to review.user.name, user_path(review.user_id) %>
 					</p>
 					<h5 class="card-title"><%= review.title %></h5>
-					<div id="star-rate-<%= review.id %>">評価：<%= review.star %></div>
+					<div id="star-rate-<%= review.id %>">評価：<%= review.star.to_f %></div>
 						<script>
 						  $('#star-rate-<%= review.id %>').raty({
 						    size: 36,
