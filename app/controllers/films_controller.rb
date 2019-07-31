@@ -1,7 +1,7 @@
 class FilmsController < ApplicationController
 
   def index
-    @films = Film.all.page(params[:page]).per(30)
+    @films = Film.all.page(params[:page]).per(20)
     if user_signed_in?
       reviews_all = Review.all
       @users = current_user.followings

@@ -26,7 +26,7 @@
 		<div class="card">
 			<h3 class="card-header">レビューを編集する
 			</h3>
-			<%= form_with model: @review, local: true, url: film_reviews_path do |f| %>
+			<%= form_with model: @review, local: true, url: film_review_path do |f| %>
 				<div class="card-body">
 					<%= f.label :star, "スコア"%>
 					<div class="field" id="star">

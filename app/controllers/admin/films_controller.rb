@@ -11,8 +11,9 @@ class Admin::FilmsController < ApplicationController
     if @film.save
       flash[:success] = "映画を作成しました"
       redirect_to new_admin_film_path
-    else flash[:warning] = "映画を作成できませんでした"
-         redirect_to new_admin_film_path
+    else
+      flash[:warning] = "映画を作成できませんでした"
+      redirect_to new_admin_film_path
     end
   end
 

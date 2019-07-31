@@ -7,6 +7,8 @@ class Review < ApplicationRecord
 
 	validates :user_id, :uniqueness => {:scope => :film_id}
 
+	default_scope -> { order(created_at: :desc)}
+
 	def good_reviewed_by?(user)
     	good_reviews.where(user_id: user.id).exists?
     end
