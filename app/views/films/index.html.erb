@@ -83,7 +83,7 @@
 					<div>
 						<%= link_to review.film.title, film_path(review.film), class:"films_timeline_filmtitle" %>
 					</div>
-					<p class="text-center"><%= review.star.to_f %><i id="star-rate-<%= review.id %>"></i></p>
+					<div class="text-center"><%= review.star.to_f %><i id="review-rate-<%= review.id %>"></i></div>
 					<p class="films_timeline_username">
 						<%= attachment_image_tag review.user, :image, class:"profile-image", fallback: "/images/no_image_profile.jpg", size: '20x20' %>
 						<%= link_to review.user.name, user_path(review.user_id) %>
@@ -95,7 +95,7 @@
 					</p>
 					<p class="films_timeline_body"><%= review.created_at.strftime("%Y/%m/%d/%H:%M") %></p>
 					<script>
-					  $('#star-rate-<%= review.id %>').raty({
+					  $('#review-rate-<%= review.id %>').raty({
 					    size: 36,
 					    starOff:  '<%= asset_path('/images/star-off.png') %>',
 					    starOn : '<%= asset_path('/images/star-on.png') %>',

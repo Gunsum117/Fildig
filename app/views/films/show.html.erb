@@ -168,9 +168,13 @@
 							<%= link_to "全部読む", film_review_path(review.film,review), class:"btn btn-link"%>
 						<p class="card-text"><small class="text-muted"><%= review.created_at.strftime("%Y/%m/%d/%H:%M") %></small></p>
 					</div>
-					<div id="good_review_button_<%= review.id %>">
-						<%= render 'good_reviews/good_review', review: review %>
-					</div>
+					<% if user_signed_in? %>
+						<div id="good_review_button_<%= review.id %>">
+							<%= render 'good_reviews/good_review', review: review %>
+						</div>
+					<% else %>
+						<%= review.good_reviews.count %>いいね
+					<% end %>
 					<% if review.user == current_user %>
 						<%= link_to '編集', edit_film_review_path(review.film_id,review), class: "btn btn-light border border-seconday"%>
 						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
