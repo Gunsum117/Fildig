@@ -1,13 +1,13 @@
 # Fildig
 
 ## 概要
-　Film（映画）をdig（探索）する、[Fildig](http://www.fildig.com)
+　Film（映画）をdig（探索）する、[Fildig](http://www.fildig.com)  
 　映画をいろんな探し方のできるサイトです
 
 ## テストユーザーログイン情報
 - URL : http://www.fildig.com
- - ユーザー名 : user1
- - パスワード : userpass
+	- ユーザー名 : user1
+	- パスワード : userpass
 
 ## 機能一覧
 - ユーザー認証機能
